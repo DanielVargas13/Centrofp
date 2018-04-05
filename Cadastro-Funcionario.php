@@ -221,7 +221,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
         </script>        
         
     </head>
-    <body class="grey lighten-5">
+    <body class="grey lighten-4">
  
         <?php 
             $sql_pegadados = mysqli_query($conn, "SELECT * FROM gerente");
@@ -301,7 +301,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
         
         <br><br><br>
         <div class="row">
-            <div class="col s10 m8 16 container center z-depth-5 offset-s1 offset-m2">
+            <div class="col s10 m6 16 container center z-depth-5 offset-s1 offset-m3">
                 <div class="card-panel z-depth-5 ">
                     <h3 class="center"> Cadastro </h3>
                     <div class="row">

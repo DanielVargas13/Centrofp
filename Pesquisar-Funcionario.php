@@ -173,11 +173,11 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                             }
                         }
                         return true;
-                    }
+                    }                            
         </script>
     </head>
 
-<body class="grey lighten-5">
+<body class="grey lighten-2">
     
         <?php 
             $sql_pegadados = mysqli_query($conn, "SELECT * FROM gerente");
@@ -258,8 +258,8 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
         <br><br><br>
     
         <div class="row">
-            <div class="col s10 m10 16 container center z-depth-5 offset-s1 offset-m1">
-                <div class="card-panel z-depth-5 ">
+            <div class="col s10 m8 16 container center z-depth-5 offset-s1 offset-m2">
+                <div class="card-panel z-depth-5">
                     <h3 class="center"> Pesquisar Funcionário </h3>
                     <div class="row">
                     <form method="post" action="Busca-Funcionario.php" class="col s12">
@@ -278,7 +278,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                                 <i class="material-icons right"> send </i>    
                             </button>&nbsp;&nbsp;&nbsp;  
                             </a>
-                            <button class="btn waves-effect waves-light light-blue darken-3" id="btnBusca" type="submit"> Pesquisar
+                            <button class="btn waves-effect waves-light light-blue darken-3" id="btnBusca" type="submit" onclick="MostraTabela()"> Pesquisar
                                 <i class="material-icons right"> send </i>    
                             </button>   
                         </div>
@@ -292,113 +292,121 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
     
     
     <br><br>
-    <form method="post" name="formCad" action="Alterar-Funcionario.php" class="col s12">
-	<div id="resultado" class="col s12 m12 16 container center z-depth-5">
-	<div class="card-panel z-depth-5 ">
-		<table class="bordered striped">
-        <tbody>
-            <input type="text" value="<?php  echo $_SESSION['usuarioIdFunc'] ?>" name="tId" id="cId" hidden/>
-           <tr>
-            <td>Nome</td>
-            <td><?php  echo $_SESSION['usuarioNomeFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioNomeFunc'] ?>" type="text" name="tNome" id="cNome" maxlength="50"  pattern="[A-Za-z\s]+$" hidden></td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModNome" id="cModNome" onclick="verificaInputNome()"> Modificar
-                                <i class="material-icons right"> edit </i>    
-                            </button></td>
-          </tr>
-         <tr>
-            <td>CPF</td>
-            <td><?php  echo $_SESSION['usuarioCPFFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioCPFFunc'] ?>" type="text" name="tCPF" id="cCPF" maxlength="14" onKeypress="formata_cpf(this,'###.###.###-##');" hidden></td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModCPF" id="cModCPF" onclick="verificaInputCPF()"> Modificar
-                                <i class="material-icons right">  edit </i>    
-                            </button></td>
-          </tr>
+    <div class="row">
+        <form method="post" name="formCad" action="Alterar-Funcionario.php" class="col s12">
+            <div id="resultado" class="col s10 m8 16 container center z-depth-5 offset-s1 offset-m2">
+            <div class="card-panel z-depth-5">
+                    <table class="bordered striped">
+        <thead>
           <tr>
-            <td>RG</td>
-            <td><?php  echo $_SESSION['usuarioRgFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioRgFunc'] ?>" type="text" name="tRG" id="cRG" maxlength="13" onKeypress="formata_cpf(this,'##-##.###.###');" hidden></td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModRg" id="cModRg" onclick="verificaInputRg()"> Modificar
-                                <i class="material-icons right">  edit </i>    
-                            </button></td>
+              <th></th>
+              <th> Informações </th>
+              <th> Editar </th>
           </tr>
-          <tr>
-            <td>Telefone Fixo</td>
-            <td><?php  echo $_SESSION['usuarioTelFFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioTelFFunc'] ?>" type="text" name="tFixo" id="cFixo" size="20" maxlength="14" onKeypress="mascara_fixo(this);" hidden></td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModTelF" id="cModTelF" onclick="verificaInputTelF()"> Modificar
-                                <i class="material-icons right">  edit </i>    
-                            </button></td>
-          </tr>
-          <tr>
-            <td>Telefone Celular</td>
-            <td><?php  echo $_SESSION['usuarioTelCFunc'] ?><input class="active validate" type="text" value="<?php  echo $_SESSION['usuarioTelCFunc'] ?>" name="tCel" id="cCel" size="20" maxlength="15" onKeypress="mascara_cel(this);" hidden></td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModTelC" id="cModTelC" onclick="verificaInputTelC()"> Modificar
-                                <i class="material-icons right">  edit </i>    
-                            </button></td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td><?php  echo $_SESSION['usuarioEmailFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioEmailFunc'] ?>" type="email" name="tMail" id="cMail" maxlength="30" hidden></td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModEmail" id="cModEmail" onclick="verificaInputEmail()"> Modificar
-                                <i class="material-icons right">  edit </i>    
-                            </button></td>
-          </tr>
-          <tr>
-            <td>Sexo</td>
-            <td><?php  echo $_SESSION['usuarioSexoFunc'] ?><fieldset id="cSexo" hidden><legend> Sexo </legend>
-                                        <input type="radio" name="tSexo" id="cMasc" value="Masculino"><label for="cMasc">Masculino</label>
-                                        <input type="radio" name="tSexo" id="cFem" value="Feminino"><label for="cFem">Feminino</label>
-                                    </fieldset></td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModSexo" id="cModSexo" onclick="verificaInputSexo()"> Modificar
-                                <i class="material-icons right">  edit </i>    
-                            </button></td>
-          </tr>
-          <tr>
-            <td>Data de Nascimento</td>
-            <td><?php  echo date("d/m/Y", strtotime($_SESSION['usuarioDataNFunc'])); ?><input class="active validate" value="<?php  echo $_SESSION['usuarioDataNFunc'] ?>" type="date" name="tData" id="cData" min="1952-01-01" max="2000-12-31" hidden></td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModData" id="cModData" onclick="verificaInputData()"> Modificar
-                                <i class="material-icons right">  edit </i>    
-                            </button></td>
-          </tr>
-          <tr>
-            <td>Função</td>
-            <td><?php  echo $_SESSION['usuarioFuncaoFunc'] ?><select name="tTrabalho" id="cTrabalho" disabled>
-                                        <option value="" disabled selected> Selecione a Função do Funcionário </option>
-                                        <option value="Comercial"> Comercial </option>
-                                        <option value="Professor" > Professor</option>
-                                        <option value="Coordenação"> Recepção </option>
-                                  </select><input type="hidden" value="<?php  echo $_SESSION['usuarioFuncaoFunc'] ?>"  name="tITrabalho" id="cITrabalho" /></td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModFunc" id="cModFunc" onclick="verificaInputFuncao()"> Modificar
-                                <i class="material-icons right">  edit </i>    
-                            </button></td>
-          </tr>
-          <tr>
-            <td>Curso</td>
-            <td><?php  echo $_SESSION['usuarioCursoFunc'] ?><input type="text" name="tCursos" id="cCursos" value="<?php  echo $_SESSION['usuarioCursoFunc'] ?>" class="autocomplete" hidden></td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModCurso" id="cModCurso" onclick="verificaInputCurso()"> Modificar
-                                <i class="material-icons right">  edit </i>    
-                            </button></td>
-          </tr>
-          <tr>
-            <td>Unidade</td>
-            <td><?php  echo $_SESSION['usuarioUnidadeFunc'] ?><select name="tUnidade"  id="cUnidade" disabled>
-                                        <option value="" disabled selected> Selecione a Unidade de Ensino </option>
-                                        <option value="Dom Camilo" > Dom Camilo </option>
-                                        <option value="Felipe Claudio de Sales" > Felipe Cláudio </option>
-                                  </select><input type="hidden" value="<?php  echo $_SESSION['usuarioUnidadeFunc'] ?>" name="tIUnidade" id="cIUnidade" /> </td>
-            <td><button class="btn waves-effect waves-light light-blue darken-3" type="button" name="tModUnidade" id="cModUnidade" onclick="verificaInputUnidade()"> Modificar
-                                <i class="material-icons right">  edit </i>    
-                            </button></td>
-          </tr>
-        </tbody>
-      </table>
-      <br><br>
-       <div class="center"> 
-       <button class="btn waves-effect waves-light light-blue darken-3" id="btnMod" type="submit" onclick="verificaSexo()"> Alterar
-                                <i class="material-icons right"> edit </i>    
-                            </button> 
+        </thead>                        
+            <tbody>
+                <input type="text" value="<?php  echo $_SESSION['usuarioIdFunc'] ?>" name="tId" id="cId" hidden/>
+               <tr>
+                <td>Nome</td>
+                <td><?php  echo $_SESSION['usuarioNomeFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioNomeFunc'] ?>" type="text" name="tNome" id="cNome" maxlength="50"  pattern="[A-Za-z\s]+$" hidden></td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModNome" id="cModNome" onclick="verificaInputNome()">
+                                    <i class="material-icons right"> edit </i>    
+                                </button></td>
+              </tr>
+             <tr>
+                <td>CPF</td>
+                <td><?php  echo $_SESSION['usuarioCPFFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioCPFFunc'] ?>" type="text" name="tCPF" id="cCPF" maxlength="14" onKeypress="formata_cpf(this,'###.###.###-##');" hidden></td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModCPF" id="cModCPF" onclick="verificaInputCPF()">
+                                    <i class="material-icons right">  edit </i>    
+                                </button></td>
+              </tr>
+              <tr>
+                <td>RG</td>
+                <td><?php  echo $_SESSION['usuarioRgFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioRgFunc'] ?>" type="text" name="tRG" id="cRG" maxlength="13" onKeypress="formata_cpf(this,'##-##.###.###');" hidden></td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModRg" id="cModRg" onclick="verificaInputRg()">
+                                    <i class="material-icons right">  edit </i>    
+                                </button></td>
+              </tr>
+              <tr>
+                <td>Telefone Fixo</td>
+                <td><?php  echo $_SESSION['usuarioTelFFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioTelFFunc'] ?>" type="text" name="tFixo" id="cFixo" size="20" maxlength="14" onKeypress="mascara_fixo(this);" hidden></td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModTelF" id="cModTelF" onclick="verificaInputTelF()">
+                                    <i class="material-icons right">  edit </i>    
+                                </button></td>
+              </tr>
+              <tr>
+                <td>Telefone Celular</td>
+                <td><?php  echo $_SESSION['usuarioTelCFunc'] ?><input class="active validate" type="text" value="<?php  echo $_SESSION['usuarioTelCFunc'] ?>" name="tCel" id="cCel" size="20" maxlength="15" onKeypress="mascara_cel(this);" hidden></td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModTelC" id="cModTelC" onclick="verificaInputTelC()">
+                                    <i class="material-icons right">  edit </i>    
+                                </button></td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td><?php  echo $_SESSION['usuarioEmailFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioEmailFunc'] ?>" type="email" name="tMail" id="cMail" maxlength="30" hidden></td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModEmail" id="cModEmail" onclick="verificaInputEmail()">
+                                    <i class="material-icons right">  edit </i>    
+                                </button></td>
+              </tr>
+              <tr>
+                <td>Sexo</td>
+                <td><?php  echo $_SESSION['usuarioSexoFunc'] ?><fieldset id="cSexo" hidden><legend> Sexo </legend>
+                                            <input type="radio" name="tSexo" id="cMasc" value="Masculino"><label for="cMasc">Masculino</label>
+                                            <input type="radio" name="tSexo" id="cFem" value="Feminino"><label for="cFem">Feminino</label>
+                                        </fieldset></td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModSexo" id="cModSexo" onclick="verificaInputSexo()">
+                                    <i class="material-icons right">  edit </i>    
+                                </button></td>
+              </tr>
+              <tr>
+                <td>Data de Nascimento</td>
+                <td><?php  echo date("d/m/Y", strtotime($_SESSION['usuarioDataNFunc'])); ?><input class="active validate" value="<?php  echo $_SESSION['usuarioDataNFunc'] ?>" type="date" name="tData" id="cData" min="1952-01-01" max="2000-12-31" hidden></td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModData" id="cModData" onclick="verificaInputData()"> 
+                                    <i class="material-icons right">  edit </i>    
+                                </button></td>
+              </tr>
+              <tr>
+                <td>Função</td>
+                <td><?php  echo $_SESSION['usuarioFuncaoFunc'] ?><select name="tTrabalho" id="cTrabalho" disabled>
+                                            <option value="" disabled selected> Selecione a Função do Funcionário </option>
+                                            <option value="Comercial"> Comercial </option>
+                                            <option value="Professor" > Professor</option>
+                                            <option value="Coordenação"> Recepção </option>
+                                      </select><input type="hidden" value="<?php  echo $_SESSION['usuarioFuncaoFunc'] ?>"  name="tITrabalho" id="cITrabalho" /></td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModFunc" id="cModFunc" onclick="verificaInputFuncao()">
+                                    <i class="material-icons right">  edit </i>    
+                                </button></td>
+              </tr>
+              <tr>
+                <td>Curso</td>
+                <td><?php  echo $_SESSION['usuarioCursoFunc'] ?><input type="text" name="tCursos" id="cCursos" value="<?php  echo $_SESSION['usuarioCursoFunc'] ?>" class="autocomplete" hidden></td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModCurso" id="cModCurso" onclick="verificaInputCurso()">
+                                    <i class="material-icons right">  edit </i>    
+                                </button></td>
+              </tr>
+              <tr>
+                <td>Unidade</td>
+                <td><?php  echo $_SESSION['usuarioUnidadeFunc'] ?><select name="tUnidade"  id="cUnidade" disabled>
+                                            <option value="" disabled selected> Selecione a Unidade de Ensino </option>
+                                            <option value="Dom Camilo" > Dom Camilo </option>
+                                            <option value="Felipe Claudio de Sales" > Felipe Cláudio </option>
+                                      </select><input type="hidden" value="<?php  echo $_SESSION['usuarioUnidadeFunc'] ?>" name="tIUnidade" id="cIUnidade" /> </td>
+                <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModUnidade" id="cModUnidade" onclick="verificaInputUnidade()">
+                                    <i class="material-icons right">  edit </i>    
+                                </button></td>
+              </tr>
+            </tbody>
+          </table>
+          <br><br>
+           <div class="center"> 
+           <button class="btn waves-effect waves-light light-blue darken-3" id="btnMod" type="submit" onclick="verificaSexo()"> Alterar
+                                    <i class="material-icons right"> edit </i>    
+                                </button> 
+            </div>
+            </div>
+            </div>
+        </form>  
         </div>
-	</div>
-        </div>
-    </form>  
-        
         
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

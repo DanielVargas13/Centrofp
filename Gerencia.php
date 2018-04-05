@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include "Conexao.php";
-$sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
+$sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 5");
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
         <link rel="stylesheet" href="css/materialize.min.css">
         
     </head>
-    <body>
+    <body class="grey lighten-2">
         
         <?php 
             $sql_pegadados = mysqli_query($conn, "SELECT * FROM gerente");
@@ -47,8 +47,8 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
 
        <?php while($l = mysqli_fetch_array($sql_banco)){ ?>   
             <div class="row">
-              <div class="col s12 m6">
-                <div class="card">
+              <div class="col s12 m6 offset-m3">
+                <div class="card z-depth-4">
                     <div class="card-image">
                         <img src="Imagens/<?php echo $l["imagem"]; ?>">
                         <span class="card-title"> <?php echo $l["titulo"]; ?> </span>

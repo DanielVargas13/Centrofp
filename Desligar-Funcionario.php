@@ -20,7 +20,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM funcionarios");
         <link rel="stylesheet" href="css/materialize.min.css">
         
     </head>
-    <body class="grey lighten-4">
+    <body class="grey lighten-2">
 
         <?php 
             $sql_pegadados = mysqli_query($conn, "SELECT * FROM gerente");
@@ -100,21 +100,21 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM funcionarios");
         
         <br><br><br>
             <div class="row">
-                <div class="col s10 m10 16 container center z-depth-5 offset-m1 offset-s1">
+                <div class="col s10 m6 16 container center z-depth-5 offset-m3 offset-s1">
                 <div class="card-panel z-depth-5 ">    
 
-        <table class="bordered">
-            <thred>
+        <table class="bordered highlight">
+            <thead>
                 <tr>
                     <th> Nome </th>
                     <th> Desligar </th>
                 </tr>
-            </thred>
+            </thead>
             <tbody>
             <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
                 <tr>
                     <td> <?php echo $l["nome"]; ?></td>
-                    <td><a href="javascript: if(confirm('Tem certeza que deseja desligar o funcionário  <?php echo $l["nome"]; ?> ?')) location.href='Desliga.php?id=<?php echo $l["id"]; ?>';"> <button class='btn waves-effect waves-light light-blue darken-3' type='button' onclick=''> Desligar
+                    <td><a href="javascript: if(confirm('Tem certeza que deseja desligar o funcionário  <?php echo $l["nome"]; ?> ?')) location.href='Desliga.php?id=<?php echo $l["id"]; ?>';"> <button class='btn-floating waves-effect waves-light light-blue darken-3' type='button' onclick=''>
                         <i class='material-icons right'> close </i>    
             </button></a></td>
                 </tr>

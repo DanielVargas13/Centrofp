@@ -1,4 +1,5 @@
 <?php 
+    
     //RECUPERAR OS DADOS ENVIADOS PELO FORMULÁRIO
     $GetPost = filter_input_array(INPUT_POST,FILTER_DEFAULT);
     
@@ -8,6 +9,7 @@
     $Email = $GetPost['tMail'];
     $Assunto = $GetPost['tAssunto'];
     $Mensagem = $GetPost['tMensagem'];
+    /*
     
     //var_dump($GetPost); RETORNAS AS INFORMAÇÕES PEGADAS    
     
@@ -38,4 +40,8 @@
         $Erro = false;
     }
     var_dump($Erro);
+    */
+
+    // send email
+    mail($Email, $Assunto,$Mensagem);
 ?>

@@ -81,17 +81,21 @@
                                     <label>Senha: </label><input class="active validate" type="password" name="tSenha" id="cSenha" maxlength="15" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s10 offset-s1">                                
-                                    <i class="material-icons prefix"> contacts </i>
-                                    <select id="cMySelect" name="tMySelect" onchange="myFunction(this.value)">
-                                        <option value="" disabled selected > Selecione o Tipo de Login </option>
-                                        <option value="Aluno" OnClick="myFunction('Aluno')"> Aluno </option>
-                                        <option value="Comercial" Onclick="myFunction('Comercial')"> Comercial </option>
-                                        <option value="Gerencia" Onclick="myFunction('Gerencia')"> Gerência </option>
-                                        <option value="Professor" OnClick="myFunction('Professor')"> Professor</option>
-                                        <option value="Coordenacao" Onclick="myFunction('Recepcao')"> Recepção </option>>
-                                  </select>
+                            <div class="row center">
+                                <div class="input-field col s10 offset-s2">
+                                   <div class="col s2">
+                                        <i class="material-icons prefix left"> contacts </i>                             
+                                   </div>
+                                   <div class="col s6">
+                                        <select id="cMySelect" name="tMySelect" onchange="myFunction(this.value)">
+                                            <option value="" disabled selected > Selecione o Tipo de Login </option>
+                                            <option value="Aluno" OnClick="myFunction('Aluno')"> Aluno </option>
+                                            <option value="Comercial" Onclick="myFunction('Comercial')"> Comercial </option>
+                                            <option value="Gerencia" Onclick="myFunction('Gerencia')"> Gerência </option>
+                                            <option value="Professor" OnClick="myFunction('Professor')"> Professor</option>
+                                            <option value="Coordenacao" Onclick="myFunction('Recepcao')"> Recepção </option>
+                                        </select>
+                                      </div>                                   
                                 </div>                                
                             </div>
                             <div class="row">
