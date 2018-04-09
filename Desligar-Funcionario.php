@@ -64,7 +64,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM funcionarios");
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Cadastro de Curso </a></li> 
+                                <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
                                 <li><a class="waves-effect" href=""> Cadastro de Turma </a></li>
                                 <li><a class="waves-effect" href=""> Pesquisa de Curso </a></li>  
                                 </li>

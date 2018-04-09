@@ -1,16 +1,17 @@
 <?php 
     session_start();
     include "Conexao.php";
+$sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 5");
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Gerência - Home</title>
+        <title>Professores - Home</title>
         <meta charset="UTF-8">
-        <meta name="discription" content="Simple">
-        <meta name="keywords" content="Simple">
-        <meta name="author" content="Fernando Jean">
+        <meta name="discription" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="Dalila Mylena Vieira, Daniel Henrique Vargas, Davi Brandão Saldanha, Fernando Jean Silva Rocha, Otávio Felipe Celani e Silva">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <!--Google Icon Font-->
@@ -21,51 +22,135 @@
     </head>
     <body class="grey lighten-4">
         
-        <?php 
-            $sql_pegadados = mysqli_query($conn, "SELECT * FROM gerente");
-            while($ln = mysqli_fetch_array($sql_pegadados)){
-                $nome = $ln['nome'];
-            }
-        ?>
-        
-        <nav class="blue">
-            <div class="nav-wrapper">
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="waves-effect" href="#"> Notícias </a></li>
-                    <li><a class="waves-effect" href="#"> Grade de Horários </a></li>
-                    <li><a class="waves-effect" href="#"> Calendário </a></li>
-                    <li><a class="waves-effect" href="#"> Mensagens </a></li>
-                    <li><a class="waves-effect" href="Sair.php"> Sair </a></li>                    
-                    <li><a class="btn waves-effect blue" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
-                </ul>
+        <div class="navbar-fixed">
+            <nav class="light-blue darken-3">
+                <div class="nav-content">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a class="waves-effect waves-light modal-trigger" href="Gerencia.php"> Home </a></li>                       
+                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" > E-mails </a></li>
+                        <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
+                        <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
+                    </ul>
+                </div>
+            </nav> 
+        </div>
+
+        <br><br><br>
+
+       <?php while($l = mysqli_fetch_array($sql_banco)){ ?>   
+            <div class="row">
+              <div class="col s12 m6 offset-m3">
+                <div class="card z-depth-4">
+                    <div class="card-image">
+                        <img src="Imagens/<?php echo $l["imagem"]; ?>">
+                        <span class="card-title"> <?php echo $l["titulo"]; ?> </span>
+                  </div>
+                  <div class="card-content">
+                    <p><?php echo $l["descricao"]; ?></p>
+                    <h8>[<?php echo date("d/m/Y", strtotime($l['data']));?>]</h8>
+                  </div>
+                </div>
+              </div>
             </div>
-        </nav>
-        
-        <ul id="slide-out" class="side-nav">
-            
+        <?php } ?> 
+               
+        <div class="modal modal-fixed-footer" id="Mensagens">
+            <div class="modal-content">
+                <h4> Envio de E-mail </h4><br>
+                <form name="EnvioEmail" method="post" action="Mail.php">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix"> account_box </i>
+                            <label for="cNome">Nome: </label><input class="active validate" type="text" name="tNome" id="cNome" maxlength="50" placeholder="Seu nome completo" pattern="[A-Za-z\s]+$" required>
+                        </div>
+                    </div>         
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix"> email </i>
+                            <label> E-mail: </label><input class="active validate" type="email" name="tMail" id="cMail" maxlength="30" placeholder="E-mail do destinatário" required>
+                        </div>
+                    </div>  
+                    <div class="row">
+                     <div class="input-field col s12">
+                            <i class="material-icons prefix"> chat </i>
+                            <label for="cAssunto">Assunto: </label><input class="active validate" type="text" name="tAssunto" id="cAssunto" maxlength="100" placeholder="Assunto da mensagem" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix"> message </i>
+                            <textarea id="cMensagem" name="tMensagem" class="materialize-textarea active validate" placeholder="Mensagem a ser Enviada" required></textarea>
+                            <label for="textarea1"> Mensagem </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="file-field input-field">
+                            <div class="btn waves-effect waves-light light-blue darken-3">
+                                <span> Arquivos </span>
+                                <input type="file"  multiple>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Upload de Arquivos">
+                            </div>
+                        </div> 
+                    </div>
+
+                    <button class="btn waves-effect waves-light light-blue darken-3 right" type="submit" onclick="return valida()"> Enviar
+                        <i class="material-icons right"> send </i>    
+                    </button> 
+                </form>    
+            </div>
+
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"> Sair </a>
+            </div>
+        </div>   
+               
+        <ul id="slide-out" class="side-nav">           
             <li>
                 <div class="user-view">
                     <div class="background">
                         <img src="Imagens/fundo.jpg">
                     </div>
-                    <a href=""><img class="circle" src="Imagens/homens.png"></a>
+                    <a href="Gerencia.php"><img class="circle" src="Imagens/homens.png"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       
             
-            <li class="no-padding">
+            <li class="no-padding"> 
                 <ul class="collapsible collapsible-accordion">
-                    <li><a class="waves-effect collapsible-header" href="Cadastro-Funcionario.php"> Cadastro de Funcionários </a>
+                    <li><a class="waves-effect collapsible-header " href="#"> Gerência de Funcionários <i class="material-icons"> arrow_drop_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                <li><a class="waves-effect" href="Cadastro-Funcionario.php"> Cadastro de Funcionários </a></li> 
+                                <li><a class="waves-effect" href="Carrega-Funcionario.php"> Pesquisar Funcionário </a></li>
+                                <li><a class="waves-effect" href="Desligar-Funcionario.php"> Desligar Funcionário </a></li>                                  
+                                </li>
+                            </ul>
+                        </div>
                     </li>   
                 </ul>
             </li>
+            
             <li><div class="divider"></div></li>
-            <li class="no-padding">
+            
+            <li class="no-padding"> 
                 <ul class="collapsible collapsible-accordion">
-                    <li><a class="waves-effect collapsible-header " href="#"> Gerência de Cursos </a>
+                    <li><a class="waves-effect collapsible-header " href="#"> Gerência de Cursos <i class="material-icons"> arrow_drop_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
+                                <li><a class="waves-effect" href=""> Cadastro de Turma </a></li>
+                                <li><a class="waves-effect" href=""> Pesquisa de Curso </a></li>  
+                                </li>
+                            </ul>
+                        </div>
                     </li>   
                 </ul>
             </li>
+            
             <li><div class="divider"></div></li>            
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
@@ -74,7 +159,7 @@
                 </ul>
             </li> 
             <li><div class="divider"></div></li>            
-        </ul>        
+        </ul>                
 
         
         <!-- Jquery-->

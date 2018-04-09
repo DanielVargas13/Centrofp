@@ -68,7 +68,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                         input.value = "<?php  echo $_SESSION['usuarioNomeFunc'] ?>";
                     }
              }
-       function verificaInputCPF(){
+        function verificaInputCPF(){
                 var input = document.getElementById('cCPF');		
                     if (input.hidden == true){
                         input.hidden = false;
@@ -76,26 +76,26 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                         input.hidden = true;
                         input.value = "<?php  echo $_SESSION['usuarioCPFFunc'] ?>";
                     }
-             }
-           function verificaInputRg(){
-                var input = document.getElementById('cRG');		
-                    if (input.hidden == true){
-                        input.hidden = false;
-                    }else{
-                        input.hidden = true;
-                        input.value = "<?php  echo $_SESSION['usuarioRgFunc'] ?>";
-                    }
-             }
-         function verificaInputTelF(){
-                var input = document.getElementById('cFixo');		
-                    if (input.hidden == true){
-                        input.hidden = false;
-                    }else{
-                        input.hidden = true;
-                        input.value = "<?php  echo $_SESSION['usuarioTelFFunc'] ?>";
-                    }
-             }
-       function verificaInputTelC(){
+            }
+        function verificaInputRg(){
+            var input = document.getElementById('cRG');		
+                if (input.hidden == true){
+                    input.hidden = false;
+                }else{
+                    input.hidden = true;
+                    input.value = "<?php  echo $_SESSION['usuarioRgFunc'] ?>";
+                }
+        }
+        function verificaInputTelF(){
+               var input = document.getElementById('cFixo');		
+                   if (input.hidden == true){
+                       input.hidden = false;
+                   }else{
+                       input.hidden = true;
+                       input.value = "<?php  echo $_SESSION['usuarioTelFFunc'] ?>";
+                   }
+        }
+        function verificaInputTelC(){
                 var input = document.getElementById('cCel');		
                     if (input.hidden == true){
                         input.hidden = false;
@@ -103,8 +103,8 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                         input.hidden = true;
                         input.value = "<?php  echo $_SESSION['usuarioTelCFunc'] ?>";
                     }
-             }
-           function verificaInputEmail(){
+        }
+        function verificaInputEmail(){
                 var input = document.getElementById('cMail');		
                     if (input.hidden == true){
                         input.hidden = false;
@@ -112,16 +112,16 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                         input.hidden = true;
                         input.value = "<?php  echo $_SESSION['usuarioEmailFunc'] ?>";
                     }
-             }
-       function verificaInputSexo(){
+        }
+        function verificaInputSexo(){
                 var input = document.getElementById('cSexo');		
                     if (input.hidden == true){
                         input.hidden = false;
                     }else{
                         input.hidden = true;
                     }
-             }
-       function verificaInputData(){
+        }
+        function verificaInputData(){
                 var input = document.getElementById('cData');		
                     if (input.hidden == true){
                         input.hidden = false;
@@ -129,51 +129,51 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                         input.hidden = true;
                         input.value = "<?php  echo $_SESSION['usuarioDataNFunc'] ?>";
                     }
-             }
-           function verificaInputFuncao(){
-                var input = document.getElementById('cTrabalho');		
-                var input2 = document.getElementById('cITrabalho');	
-                    if (input.disabled == true){
-                  $(input).prop("disabled",false);
-                  $('select').material_select();
-                    }else{
-                        $(input).prop("disabled",true);
-                        $('select').material_select();
-                        input2.value = "<?php  echo $_SESSION['usuarioFuncaoFunc'] ?>";
-                    }
-             }
-         function verificaInputCurso(){
-                var input = document.getElementById('cCursos');		
-                    if (input.hidden == true){
-                        input.hidden = false;
-                    }else{
-                        input.hidden = true;
-                        input.value = "<?php  echo $_SESSION['usuarioCursoFunc'] ?>";
-                    }
-             }
-       function verificaInputUnidade(){
-                var input = document.getElementById('cUnidade');
-                var input2 = document.getElementById('cIUnidade');	
-                    if (input.disabled == true){
-                 $(input).prop("disabled",false);
-                  $('select').material_select();
-                    }else{
-                        $(input).prop("disabled",true);
-                        $('select').material_select();
-                        input2.value = "<?php  echo $_SESSION['usuarioUnidadeFunc'] ?>";
-                    }
-             }
-         function verificaSexo(){
-                var input = "<?php  echo $_SESSION['usuarioSexoFunc'] ?>";   
-                if(document.formCad.tSexo[0].checked == false && document.formCad.tSexo[1].checked == false){
-                            if (input=="Masculino"){
-                               document.formCad.tSexo[0].checked = true; 
-                            }else{
-                                document.formCad.tSexo[1].checked = true;
-                            }
+        }
+        function verificaInputFuncao(){
+             var input = document.getElementById('cTrabalho');		
+             var input2 = document.getElementById('cITrabalho');	
+                 if (input.disabled == true){
+               $(input).prop("disabled",false);
+               $('select').material_select();
+                 }else{
+                     $(input).prop("disabled",true);
+                     $('select').material_select();
+                     input2.value = "<?php  echo $_SESSION['usuarioFuncaoFunc'] ?>";
+                 }
+        }
+        function verificaInputCurso(){
+            var input = document.getElementById('cCursos');		
+                if (input.hidden == true){
+                    input.hidden = false;
+                }else{
+                    input.hidden = true;
+                    input.value = "<?php  echo $_SESSION['usuarioCursoFunc'] ?>";
+                }
+        }
+        function verificaInputUnidade(){
+            var input = document.getElementById('cUnidade');
+            var input2 = document.getElementById('cIUnidade');	
+                if (input.disabled == true){
+             $(input).prop("disabled",false);
+              $('select').material_select();
+                }else{
+                    $(input).prop("disabled",true);
+                    $('select').material_select();
+                    input2.value = "<?php  echo $_SESSION['usuarioUnidadeFunc'] ?>";
+                }
+        }
+        function verificaSexo(){
+            var input = "<?php  echo $_SESSION['usuarioSexoFunc'] ?>";   
+            if(document.formCad.tSexo[0].checked == false && document.formCad.tSexo[1].checked == false){
+                        if (input=="Masculino"){
+                           document.formCad.tSexo[0].checked = true; 
+                        }else{
+                            document.formCad.tSexo[1].checked = true;
                         }
-                        return true;
-                    }                            
+                    }
+                    return true;
+        }                            
         </script>
     </head>
 
@@ -221,7 +221,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Cadastro de Curso </a></li> 
+                                <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
                                 <li><a class="waves-effect" href=""> Cadastro de Turma </a></li>
                                 <li><a class="waves-effect" href=""> Pesquisa de Curso </a></li>  
                                 </li>

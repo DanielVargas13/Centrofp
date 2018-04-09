@@ -64,7 +64,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                   </div>
                   <div class="card-content">
                     <p><?php echo $l["descricao"]; ?></p>
-                    <h8><?php echo date("d/m/Y", strtotime($l['data']));?> </h8>
+                    <h8>[<?php echo date("d/m/Y", strtotime($l['data']));?>]</h8>
                   </div>
                 </div>
               </div>
@@ -74,7 +74,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
         <div class="modal modal-fixed-footer" id="Mensagens">
             <div class="modal-content">
                 <h4> Envio de E-mail </h4><br>
-                <form name="EnvioEmail" method="post" action="mail.php">
+                <form name="EnvioEmail" method="post" action="Mail.php">
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix"> account_box </i>
@@ -102,7 +102,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                     </div>
                     <div class="row">
                         <div class="file-field input-field">
-                            <div class="btn">
+                            <div class="btn waves-effect waves-light light-blue darken-3">
                                 <span> Arquivos </span>
                                 <input type="file"  multiple>
                             </div>
@@ -112,7 +112,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                         </div> 
                     </div>
                     
-                    <button class="btn waves-effect waves-light right " type="submit" onclick="return valida()"> Enviar
+                    <button class="btn waves-effect waves-light light-blue darken-3 right" type="submit" onclick="return valida()"> Enviar
                         <i class="material-icons right"> send </i>    
                     </button> 
                 </form>    
@@ -142,7 +142,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                     </div>
                       <div class="row">
                                 <div class="file-field input-field">
-                                    <div class="btn">
+                                    <div class="btn waves-effect waves-light light-blue darken-3">
                                         <span> Imagem </span>
                                         <input type="file" name="arquivo" required>
                                     </div>
@@ -152,7 +152,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                                 </div>
                             </div>
                     
-                    <button class="btn waves-effect waves-light right" type="submit" onclick=""> Enviar
+                    <button class="btn waves-effect waves-light light-blue darken-3 right" type="submit" onclick=""> Enviar
                         <i class="material-icons right"> send </i>    
                     </button> 
                 </form>    
@@ -198,7 +198,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Cadastro de Curso </a></li> 
+                                <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
                                 <li><a class="waves-effect" href=""> Cadastro de Turma </a></li>
                                 <li><a class="waves-effect" href=""> Pesquisa de Curso </a></li>  
                                 </li>

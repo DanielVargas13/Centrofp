@@ -1,0 +1,131 @@
+﻿/*!
+ *nicelabel JQuery Plugin
+ *
+ *@file: jquery-nicelabel.js
+ *@author: PJY
+ *@date: 2016/05/15
+ *@site: http://www.cat666.com/
+ *@license: MIT License
+ */
+
+*{
+    margin:0px;
+    padding:0px;
+}
+.circle-nicelabel{
+    display:none !important;
+}
+.rect-nicelabel{
+    display:none !important;
+}
+.text-nicelabel{
+    display:none !important;
+}
+
+/**圆形按钮**/
+.circle-nicelabel + label {
+    display:block;
+    width:64px;
+    height:32px;
+    background-color:rgba(0,140,186,1);
+    border-radius:32px;
+    -webkit-border-radius:32px;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:background-color 0.2s;	
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+.circle-btn {
+    position:absolute;
+    width:24px;
+    height:24px;
+    background-color:#fff;
+    border-radius:12px;
+    -webkit-border-radius:12px;
+    left:36px;
+    top:4px;
+    transition:left 0.2s;
+    -webkit-transition:left 0.2s;
+}
+.circle-nicelabel:not(:checked) + label .circle-btn{
+    left:4px;
+}			
+.circle-nicelabel:not(:checked) + label{
+    background-color:#DDDDDD;
+}		
+.circle-nicelabel[disabled] + label{
+    opacity: 0.5;
+}	
+
+.rect-nicelabel + label {
+    display:block;
+    width:64px;
+    height:32px;
+    background-color:rgba(0,140,186,1);
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:background-color 0.2s;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+.rect-btn {
+    position:absolute;
+    width:24px;
+    height:24px;
+    background-color:#fff;
+    left:36px;
+    top:4px;
+    transition:left 0.2s;
+    -webkit-transition:left 0.2s;
+}
+.rect-nicelabel:not(:checked) + label .rect-btn{
+    left:4px;
+}		
+
+.rect-nicelabel:not(:checked) + label{
+    background-color:#DDDDDD;
+}
+.rect-nicelabel[disabled] + label{
+    opacity: 0.5;
+}	
+
+.text-nicelabel + label {
+    font: 13px "Microsoft Yahei";
+    display: table;
+    font-size: 11px;
+    padding: 20px 5px 10px 10px; /*DIMENSÕES DO BOTÃO*/
+    background-color:#e0e0e0;/*BACKGROUND DO BOTÃO*/
+    color: #b3b3b3;/*COR DA LETRA*/
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:all 0.2s;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+/*COR DO FUNDO CHECKED
+.text-nicelabel:not(:checked) + label {
+    background-color: #DDDDDD;
+    color: #a7a7a7;
+}
+*/
+
+/*TEXTO UNCHECKED E CHECEKD*/
+.text-nicelabel:not(:checked) + label > span.nicelabel-checked{
+    display: none;
+}
+.text-nicelabel:checked + label > span.nicelabel-unchecked{
+    display: none;
+}
+
+/*COR DO BOTÃO CHECKED AO SELECIONAR*/
+.text-nicelabel:checked + label {
+    background-color: #0277bd;
+    color: #fff;
+}

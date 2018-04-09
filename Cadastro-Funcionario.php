@@ -265,7 +265,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Cadastro de Curso </a></li> 
+                                <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
                                 <li><a class="waves-effect" href=""> Cadastro de Turma </a></li>
                                 <li><a class="waves-effect" href=""> Pesquisa de Curso </a></li>  
                                 </li>
@@ -360,16 +360,22 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                                    <label> Data de Nascimento: </label><input class="active validate" type="date" name="tData" id="cData" min="1952-01-01" max="2000-12-31" required>    
                                 </div>
                             </div>
+                            <div class="row center">
+                                <div class="input-field col s10 offset-s2">
+                                   <div class="col s2">
+                                        <i class="material-icons prefix left"> contacts </i>                             
+                                   </div>
+                                   <div class="col s6 m6">
+                                        <select name="tTrabalho" id="cTrabalho">
+                                            <option value="" disabled selected> Selecione o Cargo </option>
+                                            <option value="Comercial"> Comercial </option>
+                                            <option value="Professor" > Professor</option>
+                                            <option value="Coordenação"> Recepção </option>
+                                      </select>
+                                    </div>                                   
+                                </div>                                
+                            </div>                    
                             <div class="row">
-                                <div class="input-field col s12 m6">                                     
-                                    <i class="material-icons prefix"> contacts </i>
-                                    <select name="tTrabalho" id="cTrabalho">
-                                        <option value="" disabled selected> Selecione a Função do Funcionário </option>
-                                        <option value="Comercial"> Comercial </option>
-                                        <option value="Professor" > Professor</option>
-                                        <option value="Coordenação"> Recepção </option>
-                                  </select>
-                                </div>
                                 <input type="hidden"  name="tITrabalho" id="cITrabalho" />
                                     <div class="col s12">
                                             <div class="input-field col s12">
@@ -378,17 +384,21 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                                                 <label for="autocomplete-input"> Selecione o Curso do Funcionário </label>
                                             </div>
                                     </div>            
-                            </div>     
-                            <div class="row">
-                                <div class="input-field col s12">                                     
-                                    <i class="material-icons prefix"> contacts </i>
+                            </div> 
+                            <div class="row center">
+                                <div class="input-field col s10 offset-s2">
+                                   <div class="col s2">
+                                        <i class="material-icons prefix left"> contacts </i>                             
+                                   </div>
+                                   <div class="col s6 m6">
                                     <select name="tUnidade" id="cUnidade">
-                                        <option value="" disabled selected> Selecione a Unidade de Ensino </option>
-                                        <option value="Dom Camilo" > Dom Camilo </option>
+                                        <option value="" disabled selected> Selecione a Unidade </option>                                        
                                         <option value="Felipe Claudio de Sales" > Felipe Cláudio </option>
+                                        <option value="Lagoa" > Lagoa </option>
                                   </select>
+                                    </div>                                   
                                 </div>                                
-                            </div>
+                            </div>  
                             <input type="hidden" name="tIUnidade" id="cIUnidade" />                 
                             <div class="row">
                                 <div class="center"> 
