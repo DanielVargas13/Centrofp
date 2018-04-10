@@ -13,7 +13,7 @@
         
         if(empty($resultado)){
             $_SESSION['loginErro'] = "Usuário ou senha Inválido";
-            header("Location: Index.php");
+            header("Location: index.php");
         }else if(isset($resultado)){
             $_SESSION['usuarioNome'] = $resultado['nome'];
             header("Location: Gerencia.php");//VERIFICAR E CORRIGIR AQUI - PEGAR O TIPO DE FUNCIONÁRIO DO BANCO DE DADOS E DAR IF PARA PÁGINA
