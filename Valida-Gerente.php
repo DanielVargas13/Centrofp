@@ -19,7 +19,7 @@
             header("Location: Gerencia.php");
         }else{
             $_SESSION['loginErro'] = "Usuário ou senha Inválido";
-            header("Location: Index.php");
+            header("Location: index.php");
         }
         
     }else{
