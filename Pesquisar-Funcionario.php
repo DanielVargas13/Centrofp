@@ -360,7 +360,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
               </tr>
               <tr>
                 <td>Data de Nascimento</td>
-                <td><?php  echo date("d/m/Y", strtotime($_SESSION['usuarioDataNFunc'])); ?><input class="active validate" value="<?php  echo $_SESSION['usuarioDataNFunc'] ?>" type="date" name="tData" id="cData" min="1952-01-01" max="2000-12-31" hidden></td>
+                <td><?php  echo $_SESSION['usuarioDataNFunc'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioDataNFunc'] ?>" type="date" name="tData" id="cData" min="1952-01-01" max="2000-12-31" hidden></td>
                 <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModData" id="cModData" onclick="verificaInputData()"> 
                                     <i class="material-icons right">  edit </i>    
                                 </button></td>

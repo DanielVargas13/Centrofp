@@ -379,7 +379,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                                 <input type="hidden"  name="tITrabalho" id="cITrabalho" />
                                     <div class="col s12">
                                             <div class="input-field col s12">
-                                                <i class="material-icons prefix">textsms</i>
+                                                <i class="material-icons prefix">library_books </i>
                                                 <input type="text" id="cCursos" class="autocomplete" disabled>
                                                 <label for="autocomplete-input"> Selecione o Curso do Funcionário </label>
                                             </div>
@@ -388,7 +388,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                             <div class="row center">
                                 <div class="input-field col s10 offset-s2">
                                    <div class="col s2">
-                                        <i class="material-icons prefix left"> contacts </i>                             
+                                        <i class="material-icons prefix left"> business </i>                             
                                    </div>
                                    <div class="col s6 m6">
                                     <select name="tUnidade" id="cUnidade">

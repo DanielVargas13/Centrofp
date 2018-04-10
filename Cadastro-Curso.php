@@ -53,15 +53,48 @@
                         if(!validaRadioTurno()){
                             return false;
                         }else{
-                            
+                            if(!validaDias()){
+                                return false;
+                            }else{
+                                if(!validaHoras()){
+                                    return false;
+                                }else{
+                                    if(unidade.value == ""){
+                                        alert('Selecione uma Unidade!');
+                                        return false;
+                                    }
+                                }
+                            }
                         }
                 }
             }
-            
+            }
                  
             function validaRadioTurno(){
                 if(document.formCad1.tTurno[0].checked == false && document.formCad1.tTurno[1].checked == false && document.formCad1.tTurno[2].checked == false){
                     alert('Selecione o Turno!');
+                    return false;
+                }
+                return true;
+            }
+            function validaDias(){
+                var seg = document.getElementById('cSeg');
+                var ter = document.getElementById('cTer');
+                var qua = document.getElementById('cQua');
+                var qui = document.getElementById('cQui');
+                var sex = document.getElementById('cSex');
+                var sab = document.getElementById('cSab');
+                if(!seg.checked&&!ter.checked&&!qua.checked&&!qui.checked&&!sex.checked&&!sab.checked){
+                     alert('Selecione pelo menos um dia da semana!');
+                    return false;
+                }
+                return true;
+            }
+            function validaHoras(){
+                var inicio = document.getElementById('cIni');
+                var termino = document.getElementById('cFim');
+                if(inicio.value == ""||termino.value == ""){
+                     alert('Informe os horários de inicio e termino!');
                     return false;
                 }
                 return true;
@@ -181,12 +214,12 @@
                                 <div class="col s10 offset-s1 m10 offset-m1 l6 offset-l3">
                                     <fieldset id="Dias"><legend> Dias da Semana </legend>
                                         <div id="text-checkbox">
-                                            <input name="tSegnda" id="cSeg" value="Segunda-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Seg", "unchecked_text": "Seg"}' type="checkbox"/>	
-                                            <input name="tTerca" id="cTer" value="Terça-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Ter", "unchecked_text": "Ter"}' type="checkbox"/>	
-                                            <input name="tQauta" id="cQua" value="Quarta-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Qua", "unchecked_text": "Qua"}' type="checkbox"/>	
-                                            <input name="tQuinta" id="cQui" value="Quinta-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Qui", "unchecked_text": "Qui"}' type="checkbox"/>	
-                                            <input name="tSexta" id="cSex" value="Sexta-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Sex", "unchecked_text": "Sex"}' type="checkbox"/>	
-                                            <input name="tSabado" id="cSab" value="Sábado" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Sab", "unchecked_text": "Sab"}' type="checkbox"/>	
+                                            <input name="tSeg" id="cSeg" value="Segunda-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Seg", "unchecked_text": "Seg"}' type="checkbox"/>	
+                                            <input name="tTer" id="cTer" value="Terça-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Ter", "unchecked_text": "Ter"}' type="checkbox"/>	
+                                            <input name="tQua" id="cQua" value="Quarta-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Qua", "unchecked_text": "Qua"}' type="checkbox"/>	
+                                            <input name="tQui" id="cQui" value="Quinta-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Qui", "unchecked_text": "Qui"}' type="checkbox"/>	
+                                            <input name="tSex" id="cSex" value="Sexta-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Sex", "unchecked_text": "Sex"}' type="checkbox"/>	
+                                            <input name="tSab" id="cSab" value="Sábado" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Sab", "unchecked_text": "Sab"}' type="checkbox"/>	
                                         </div>   
                                     </fieldset>
                                 </div>
@@ -195,7 +228,7 @@
                                 <div class="col s10 offset-s1 m10 offset-m1 l10 offset-l1">
                                     <table id="days" class="table table-hover">
                                         <thead>
-                                            <tr><th class="center">Hora Início</th><th class="center">Hora Término</th><th></th></tr>
+                                            <tr><th class="center">Hora Início</th><th class="center">Hora Término</th></tr>
                                         </thead>
                                         <tbody>
                                             <td data-name="start"><input type="time" name="start0" id="cIni" class="center"></td><td data-name="end"><input type="time" name="end0" id="cFim" class="center"></td>
