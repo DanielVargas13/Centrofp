@@ -24,6 +24,6 @@
         
     }else{
         $_SESSION['LoginErro'] = "Usuário ou Senha Inválido!";
-        header("Location: Index.php");
+        header("Location: index.php");
     }
 ?>
