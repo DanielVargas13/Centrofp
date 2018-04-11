@@ -26,7 +26,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
             <nav class="light-blue darken-3">
                 <div class="nav-content">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light modal-trigger" href="Gerencia.php"> Home </a></li>                       
+                        <li><a class="waves-effect waves-light modal-trigger" href="Professores.php"> Home </a></li>                       
                         <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" > E-mails </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
@@ -112,20 +112,18 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                     <div class="background">
                         <img src="Imagens/fundo.jpg">
                     </div>
-                    <a href="Gerencia.php"><img class="circle" src="Imagens/homens.png"></a>
+                    <a href="Professores.php"><img class="circle" src="Imagens/homens.png"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       
             
             <li class="no-padding"> 
                 <ul class="collapsible collapsible-accordion">
-                    <li><a class="waves-effect collapsible-header " href="#"> Gerência de Funcionários <i class="material-icons"> arrow_drop_down</i></a>
+                    <li><a class="waves-effect collapsible-header " href="#"> Acesso as Turmas <i class="material-icons"> arrow_drop_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href="Cadastro-Funcionario.php"> Cadastro de Funcionários </a></li> 
-                                <li><a class="waves-effect" href="Carrega-Funcionario.php"> Pesquisar Funcionário </a></li>
-                                <li><a class="waves-effect" href="Desligar-Funcionario.php"> Desligar Funcionário </a></li>                                  
+                                <li><a class="waves-effect" href="Professor-Turmas.php"> Turma de Programação </a></li>                               
                                 </li>
                             </ul>
                         </div>
@@ -133,33 +131,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                 </ul>
             </li>
             
-            <li><div class="divider"></div></li>
-            
-            <li class="no-padding"> 
-                <ul class="collapsible collapsible-accordion">
-                    <li><a class="waves-effect collapsible-header " href="#"> Gerência de Cursos <i class="material-icons"> arrow_drop_down</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li>
-                                <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
-                                <li><a class="waves-effect" href=""> Cadastro de Turma </a></li>
-                                <li><a class="waves-effect" href=""> Pesquisa de Curso </a></li>  
-                                </li>
-                            </ul>
-                        </div>
-                    </li>   
-                </ul>
-            </li>
-            
-            <li><div class="divider"></div></li>            
-            <li class="no-padding">
-                <ul class="collapsible collapsible-accordion">
-                    <li><a class="waves-effect collapsible-header " href="#"> Relatórios </a>
-                    </li>   
-                </ul>
-            </li> 
-            <li><div class="divider"></div></li>            
-        </ul>                
+            <li><div class="divider"></div></li>             
 
         
         <!-- Jquery-->
@@ -167,11 +139,26 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
         <!--Materialize JS-->
         <script src="js/materialize.min.js"></script>
     
+        <!--SIDENAV-->
         <script>
             $(document).ready(function(){
                 $(".btn").sideNav();
             });
         </script>
+        
+        <!-- MODALS -->
+        <script>
+            $(document).ready(function(){
+                // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+                $('.modal').modal();
+             });       
+        </script>  
+        <script>   
+            $(document).ready(function(){
+                // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                $('.modal-trigger').leanModal();
+            }); 
+        </script> 
 
     </body>
 </html>
