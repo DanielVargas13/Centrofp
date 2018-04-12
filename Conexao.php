@@ -1,5 +1,5 @@
 <?php 
-    $servidor = "localhost";
+    $servidor = "dados.000webhost.com";
     $usuario = "id5393392_cfpadmin";
     $senha = "914161tis";
     $dbname = "id5393392_cfp";
