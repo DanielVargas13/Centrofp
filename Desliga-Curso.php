@@ -17,11 +17,11 @@
     
                 
     //ENVIANDO A QUERY PARA O BANCO DE DADOS
-    $query = "DELETE FROM noticias WHERE id='$id'";
+    $query = "DELETE FROM cursos WHERE id='$id'";
     
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conexao->query($query)=== TRUE){
-        header("Location: Gerencia.php");
+        header("Location: Desligar-Curso.php");
     }else{
         echo "Erro ao Inserir";
     }

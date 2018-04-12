@@ -1,8 +1,8 @@
 <?php 
     //CONECTANDO COM O BANCO DE DADOS
-    $servidor = "centrofpserv.mysql.database.azure.com";
-    $usuario = "cfpadmin@centrofpserv";
-    $senha = "914161Tis";
+    $servidor = "localhost";
+    $usuario = "root";
+    $senha = "";
     $dbname = "cfp";
 
     $conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
@@ -27,10 +27,7 @@
     $unidadeEnsino = isset($_POST['tIUnidade'])? $_POST['tIUnidade']:'';
     
     //ENVIANDO A QUERY DO CURSO PARA O BANCO DE DADOS
-    $query = "INSERT INTO cursos(curso, prof, turno, seg, ter, qua, qui, sex, sab, horainicio, horafim, unidade) VALUES('$curso','$prof','$turno','$seg','$ter','$qua','$qui','$sex','$sab','$horaini','$horafim','$unidadeEnsino')";
-   
-    //ENVIANDO A QUERY DE TURMA PARA O BANCO DE DADOS
-    $query = "INSERT INTO turmas(curso, prof, turno, seg, ter, qua, qui, sex, sab, horainicio, horafim, unidade) VALUES('$curso','$prof','$turno','$seg','$ter','$qua','$qui','$sex','$sab','$horaini','$horafim','$unidadeEnsino')";
+    $query = "INSERT INTO cursos(descricao, prof, turno, segunda, terca, quarta, quinta, sexta, sabado, horainicio, horafim, unidadeEnsino,funcionario_id, gerente_id) VALUES('$curso','$prof','$turno','$seg','$ter','$qua','$qui','$sex','$sab','$horaini','$horafim','$unidadeEnsino',1,1)";
     
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conexao->query($query)=== TRUE){

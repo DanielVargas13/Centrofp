@@ -199,8 +199,9 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                             <ul>
                                 <li>
                                 <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
+                                <li><a class="waves-effect" href="Carrega-Curso.php"> Pesquisa de Curso </a></li>
+                                <li><a class="waves-effect" href="Desligar-Curso.php"> Desligar Funcionário </a></li>  
                                 <li><a class="waves-effect" href=""> Cadastro de Turma </a></li>
-                                <li><a class="waves-effect" href=""> Pesquisa de Curso </a></li>  
                                 </li>
                             </ul>
                         </div>

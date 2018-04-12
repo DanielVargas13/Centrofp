@@ -1,7 +1,7 @@
 <?php 
-    $servidor = "centrofpserv.mysql.database.azure.com";
-    $usuario = "cfpadmin@centrofpserv";
-    $senha = "914161Tis";
+    $servidor = "localhost";
+    $usuario = "root";
+    $senha = "";
     $dbname = "cfp";
     
     $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);

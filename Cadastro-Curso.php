@@ -148,8 +148,9 @@
                             <ul>
                                 <li>
                                 <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
-                                <li><a class="waves-effect" href=""> Cadastro de Turma </a></li>
-                                <li><a class="waves-effect" href=""> Pesquisa de Curso </a></li>  
+                                <li><a class="waves-effect" href="Carrega-Curso.php"> Pesquisa de Curso </a></li>
+                                <li><a class="waves-effect" href="Desligar-Curso.php"> Desligar Funcionário </a></li>  
+                                <li><a class="waves-effect" href=""> Cadastro de Turma </a></li> 
                                 </li>
                             </ul>
                         </div>
@@ -214,12 +215,12 @@
                                 <div class="col s10 offset-s1 m10 offset-m1 l6 offset-l3">
                                     <fieldset id="Dias"><legend> Dias da Semana </legend>
                                         <div id="text-checkbox">
-                                            <input name="tSeg" id="cSeg" value="Segunda-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Seg", "unchecked_text": "Seg"}' type="checkbox"/>	
-                                            <input name="tTer" id="cTer" value="Terça-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Ter", "unchecked_text": "Ter"}' type="checkbox"/>	
-                                            <input name="tQua" id="cQua" value="Quarta-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Qua", "unchecked_text": "Qua"}' type="checkbox"/>	
-                                            <input name="tQui" id="cQui" value="Quinta-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Qui", "unchecked_text": "Qui"}' type="checkbox"/>	
-                                            <input name="tSex" id="cSex" value="Sexta-Feira" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Sex", "unchecked_text": "Sex"}' type="checkbox"/>	
-                                            <input name="tSab" id="cSab" value="Sábado" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Sab", "unchecked_text": "Sab"}' type="checkbox"/>	
+                                            <input name="tSeg" id="cSeg" value="1" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Seg", "unchecked_text": "Seg"}' type="checkbox" onClick = "verificaSeg()"/>	
+                                            <input name="tTer" id="cTer" value="1" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Ter", "unchecked_text": "Ter"}' type="checkbox" onClick = "verificaTer()"/>	
+                                            <input name="tQua" id="cQua" value="1" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Qua", "unchecked_text": "Qua"}' type="checkbox" onClick = "verificaQua()"/>	
+                                            <input name="tQui" id="cQui" value="1" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Qui", "unchecked_text": "Qui"}' type="checkbox" onClick = "verificaQui()"/>	
+                                            <input name="tSex" id="cSex" value="1" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Sex", "unchecked_text": "Sex"}' type="checkbox" onClick = "verificaSex()"/>	
+                                            <input name="tSab" id="cSab" value="1" class="text-nicelabel" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "Sab", "unchecked_text": "Sab"}' type="checkbox" onClick = "verificaSab()"/>	
                                         </div>   
                                     </fieldset>
                                 </div>

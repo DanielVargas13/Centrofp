@@ -1,8 +1,8 @@
 <?php 
     //CONECTANDO COM O BANCO DE DADOS
-    $servidor = "centrofpserv.mysql.database.azure.com";
-    $usuario = "cfpadmin@centrofpserv";
-    $senha = "914161Tis";
+    $servidor = "localhost";
+    $usuario = "root";
+    $senha = "";
     $dbname = "cfp";
 
     $conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
@@ -25,7 +25,7 @@
     $descricao = isset($_POST['tDescricao']) ? $_POST['tDescricao']: '';
                 
     //ENVIANDO A QUERY PARA O BANCO DE DADOS
-    $query = "INSERT INTO noticias(titulo,descricao,imagem,data) VALUES('$titulo','$descricao','$novo_nome', NOW())";
+    $query = "INSERT INTO noticias(titulo,descricao,data,imagem,gerente_id) VALUES('$titulo','$descricao',NOW(),'$novo_nome',1)";
     
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conexao->query($query)=== TRUE){

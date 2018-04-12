@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include "Conexao.php";
-$sql_banco = mysqli_query($conn, "SELECT * FROM funcionarios");
+$sql_banco = mysqli_query($conn, "SELECT * FROM cursos");
 ?>
 
 <!DOCTYPE html>
@@ -64,10 +64,10 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM funcionarios");
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
+                               <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
                                 <li><a class="waves-effect" href="Carrega-Curso.php"> Pesquisa de Curso </a></li>
                                 <li><a class="waves-effect" href="Desligar-Curso.php"> Desligar Funcionário </a></li>  
-                                <li><a class="waves-effect" href=""> Cadastro de Turma </a></li>
+                                <li><a class="waves-effect" href=""> Cadastro de Turma </a></li> 
                                 </li>
                             </ul>
                         </div>
@@ -114,8 +114,8 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM funcionarios");
             <tbody>
             <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
                 <tr>
-                    <td> <?php echo $l["nome"]; ?></td>
-                    <td><a href="javascript: if(confirm('Tem certeza que deseja desligar o funcionário  <?php echo $l["nome"]; ?> ?')) location.href='Desliga-Funcionario.php?id=<?php echo $l["id"]; ?>';"> <button class='btn-floating waves-effect waves-light light-blue darken-3' type='button' onclick=''>
+                    <td> <?php echo $l["descricao"]; ?></td>
+                    <td><a href="javascript: if(confirm('Tem certeza que deseja excluir o curso  <?php echo $l["descricao"]; ?> ?')) location.href='Desliga-Curso.php?id=<?php echo $l["id"]; ?>';"> <button class='btn-floating waves-effect waves-light light-blue darken-3' type='button' onclick=''>
                         <i class='material-icons right'> close </i>    
             </button></a></td>
                 </tr>

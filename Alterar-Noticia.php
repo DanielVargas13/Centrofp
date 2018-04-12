@@ -1,8 +1,8 @@
 <?php 
     //CONECTANDO COM O BANCO DE DADOS
-    $servidor = "centrofpserv.mysql.database.azure.com";
-    $usuario = "cfpadmin@centrofpserv";
-    $senha = "914161Tis";
+    $servidor = "localhost";
+    $usuario = "root";
+    $senha = "";
     $dbname = "cfp";
 
     $conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
