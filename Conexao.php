@@ -1,8 +1,8 @@
 <?php 
-    $servidor = "dados.000webhost.com";
-    $usuario = "id5393392_cfpadmin";
-    $senha = "914161tis";
-    $dbname = "id5393392_cfp";
+    $servidor = "localhost";
+    $usuario = "root";
+    $senha = "";
+    $dbname = "cfp";
     
     $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
     
