@@ -14,10 +14,17 @@
                 
     //INICIALIZANDO AS VARIÁVEIS
     $id = intval($_GET['id']);
-    
-                
+    $cargo = $_GET['cargo'];
+
+    if($cargo == "Comercial"){
+        $tabela = "comercial";
+    }else if($cargo == "Professor"){
+        $tabela = "professores";
+    }else if($cargo == "Recepcao"){
+        $tabela = "recepcao";
+    }  
     //ENVIANDO A QUERY PARA O BANCO DE DADOS
-    $query = "DELETE FROM professores WHERE id='$id'";
+    $query = "DELETE FROM $tabela WHERE id='$id'";
     
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conexao->query($query)=== TRUE){

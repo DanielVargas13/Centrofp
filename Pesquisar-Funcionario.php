@@ -141,15 +141,15 @@
                      input2.value = "<?php  echo $_SESSION['usuarioFuncaoFunc'] ?>";
                  }
         }
-        function verificaInputCurso(){
+      /*  function verificaInputCurso(){
             var input = document.getElementById('cCursos');		
                 if (input.hidden == true){
                     input.hidden = false;
                 }else{
                     input.hidden = true;
-                    input.value = "<?php  echo $_SESSION['usuarioCursoFunc'] ?>";
+                    input.value = "";
                 }
-        }
+        }*/
         function verificaInputUnidade(){
             var input = document.getElementById('cUnidade');
             var input2 = document.getElementById('cIUnidade');	
@@ -161,6 +161,16 @@
                     $('select').material_select();
                     input2.value = "<?php  echo $_SESSION['usuarioUnidadeFunc'] ?>";
                 }
+        }
+        function validaTabela(){
+            verificaSexo();
+            var input = "<?php  echo $_SESSION['usuarioFuncaoFunc'] ?>";
+            var input2 = document.getElementById('cITrabalho');
+            if(input == input2.value){
+                document.formCad.action = "Alterar-Funcionario.php";
+            }else{
+                document.formCad.action = "Transferir-Funcionario.php";
+            }
         }
         function verificaSexo(){
             var input = "<?php  echo $_SESSION['usuarioSexoFunc'] ?>";   
@@ -305,7 +315,7 @@
     
     <br><br>
     <div class="row">
-        <form method="post" name="formCad" action="Alterar-Funcionario.php" class="col s12">
+        <form method="post" name="formCad" action="" class="col s12">
             <div id="resultado" class="col s10 m8 16 container center z-depth-5 offset-s1 offset-m2">
             <div class="card-panel z-depth-5">
                     <table class="bordered striped">
@@ -383,19 +393,19 @@
                                             <option value="" disabled selected> Selecione a Função do Funcionário </option>
                                             <option value="Comercial"> Comercial </option>
                                             <option value="Professor" > Professor</option>
-                                            <option value="Coordenação"> Recepção </option>
+                                            <option value="Recepcao"> Recepção </option>
                                       </select><input type="hidden" value="<?php  echo $_SESSION['usuarioFuncaoFunc'] ?>"  name="tITrabalho" id="cITrabalho" /></td>
                 <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModFunc" id="cModFunc" onclick="verificaInputFuncao()">
                                     <i class="material-icons right">  edit </i>    
                                 </button></td>
               </tr>
-              <tr>
+              <!--<tr>
                 <td>Curso</td>
-                <td><?php  echo $_SESSION['usuarioCursoFunc'] ?><input type="text" name="tCursos" id="cCursos" value="<?php  echo $_SESSION['usuarioCursoFunc'] ?>" class="autocomplete" hidden></td>
+                <td><input type="text" name="tCursos" id="cCursos" value="" class="autocomplete" hidden></td>
                 <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModCurso" id="cModCurso" onclick="verificaInputCurso()">
                                     <i class="material-icons right">  edit </i>    
                                 </button></td>
-              </tr>
+              </tr>-->
               <tr>
                 <td>Unidade</td>
                 <td><?php  echo $_SESSION['usuarioUnidadeFunc'] ?><select name="tUnidade"  id="cUnidade" disabled>
@@ -411,7 +421,7 @@
           </table>
           <br><br>
            <div class="center"> 
-           <button class="btn waves-effect waves-light light-blue darken-3" id="btnMod" type="submit" onclick="verificaSexo()"> Alterar
+           <button class="btn waves-effect waves-light light-blue darken-3" id="btnMod" type="submit" onclick="validaTabela()"> Alterar
                                     <i class="material-icons right"> edit </i>    
                                 </button> 
             </div>
@@ -444,19 +454,13 @@
             });
             $(document).ready(function() {
                 $('select').material_select();
-                $('#cCursos').on('change', function() {
-                $('#cICursos').val($('#cCursos').val());
-                });
-            });
-            $(document).ready(function() {
-                $('select').material_select();
                 $('#cUnidade').on('change', function() {
                 $('#cIUnidade').val($('#cUnidade').val());
                 });
             });
         </script>
 
-        <script>
+        <!--<script>
             $(document).ready(function () {$('input.autocomplete').autocomplete({
                 data: {
                     "Assistente Administrativo": null,
@@ -496,7 +500,7 @@
                     "Reforço Escolar": null,
                     "Maquiagem": null,
             }});});        
-        </script> 
+        </script> -->
         
         <!-- SIDENAV-->
         <script>

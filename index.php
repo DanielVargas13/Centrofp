@@ -34,20 +34,6 @@
                     }
                 }
             }
-    
-            function myFunction(val){
-                if(val == "Aluno"){
-                    document.FORM.action = "Valida-Aluno.php";
-                }else if(val == "Comercial"){
-                    document.FORM.action = "Valida-Comercial.php";
-                }else if(val == "Gerencia"){
-                    document.FORM.action = "Valida-Gerente.php";
-                }else if(val == "Professor"){
-                    document.FORM.action = "Valida-Professor.php";
-                }else if(val == "Recepcao"){
-                    document.FORM.action = "Valida-Recepcao.php";
-                }
-            }
             
         </script>
         
@@ -68,7 +54,7 @@
                 <div class="card-panel z-depth-5"> 
                     <h3 class="center"> Login</h3>
                     <div class="row">
-                        <form method="post" action="" name="FORM" id="formCad">
+                        <form method="post" action="Valida-Login.php" name="FORM" id="formCad">
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
                                     <i class="material-icons prefix"> email </i>
@@ -87,17 +73,18 @@
                                         <i class="material-icons prefix left"> contacts </i>                             
                                    </div>
                                    <div class="col s6">
-                                        <select id="cMySelect" name="tMySelect" onchange="myFunction(this.value)">
+                                        <select id="cCargo" name="tCargo">
                                             <option value="" disabled selected > Selecione o Tipo de Login </option>
-                                            <option value="Aluno" OnClick="myFunction('Aluno')"> Aluno </option>
-                                            <option value="Comercial" Onclick="myFunction('Comercial')"> Comercial </option>
-                                            <option value="Gerencia" Onclick="myFunction('Gerencia')"> Gerência </option>
-                                            <option value="Professor" OnClick="myFunction('Professor')"> Professor</option>
-                                            <option value="Coordenacao" Onclick="myFunction('Recepcao')"> Recepção </option>
+                                            <option value="Aluno"> Aluno </option>
+                                            <option value="Comercial"> Comercial </option>
+                                            <option value="Gerencia"> Gerência </option>
+                                            <option value="Professor"> Professor</option>
+                                            <option value="Recepcao"> Recepção </option>
                                         </select>
                                       </div>                                   
                                 </div>                                
                             </div>
+                            <input type="hidden" name="tICargo" id="cICargo" /> 
                             <div class="row">
                                 <div class="center">   
                                     <button class="btn waves-effect waves-light  light-blue darken-3" type="submit" onclick="return valida()"> Login 
@@ -121,6 +108,22 @@
               $('select').material_select();
             });
         </script>
+        
+        <!-- INICIALIZA OS HIDDEN DOS SELECTS -->
+        <script>
+            $(document).ready(function() {
+                $('select').material_select();
+                $('#cCargo').on('change', function() {
+                $('#cICargo').val($('#cCargo').val());
+                });
+            });
+            $(document).ready(function() {
+                $('select').material_select();
+                $('#cUnidade').on('change', function() {
+                $('#cIUnidade').val($('#cUnidade').val());
+                });
+            });
+        </script> 
               
     </body>
 </html>

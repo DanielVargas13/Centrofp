@@ -112,7 +112,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                     <div class="background">
                         <img src="Imagens/fundo.jpg">
                     </div>
-                    <a href="Recepcionista.php"><img class="circle" src="Imagens/homens.png"></a>
+                    <a href="Recepcionista.php"><img class="circle" src="Img_Prog/<?php  echo $_SESSION['usuarioFoto'] ?>"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       

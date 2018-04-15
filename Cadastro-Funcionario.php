@@ -228,17 +228,6 @@
             alert('Vá para a tela inicial para enviar um E-mail!');
             return false;
         }
-        
-        //Seleciona o tipo de inserção
-        function myFunction(val){
-            if(val == "Comercial"){
-                document.formCad1.action = "Inserir-Comercial.php";
-            }else if(val == "Professor"){
-                document.formCad1.action = "Inserir-Professor.php";
-            }else if(val == "Recepcao"){
-                document.formCad1.action = "Inserir-Recepcionista.php";
-            }  
-        }
 
          
        
@@ -330,7 +319,7 @@
                 <div class="card-panel z-depth-5 ">
                     <h3 class="center"> Cadastro </h3>
                     <div class="row">
-                        <form method="POST" name="formCad1" id="formCad" action="" enctype="multipart/form-data">
+                        <form method="POST" name="formCad1" id="formCad" action="Inserir-Funcionario.php" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix"> account_box </i>
@@ -391,11 +380,11 @@
                                         <i class="material-icons prefix left"> contacts </i>                             
                                    </div>
                                    <div class="col s6 m6">
-                                        <select id="cCargo" name="tCargo" onchange="myFunction(this.value)">
+                                        <select id="cCargo" name="tCargo">
                                             <option value="" disabled selected > Selecione o Cargo </option>
-                                            <option value="Comercial" Onclick="myFunction('Comercial')"> Comercial </option>
-                                            <option value="Professor" OnClick="myFunction('Professor')"> Professor</option>
-                                            <option value="Coordenacao" Onclick="myFunction('Recepcao')"> Recepção </option>
+                                            <option value="Comercial"> Comercial </option>
+                                            <option value="Professor"> Professor</option>
+                                            <option value="Recepcao"> Recepção </option>
                                         </select>
                                     </div>                                   
                                 </div>                                

@@ -15,12 +15,16 @@
     $funcFuncionario = isset($_POST['tITrabalho'])? $_POST['tITrabalho']:'';
     $unidadeEnsino = isset($_POST['tIUnidade'])? $_POST['tIUnidade']:'';
     
-    $query = "UPDATE professores SET nome='$nome',cpf='$cpf',rg='$rg', tfixo='$telFixo', tcell='$telCel', email='$email', sexo='$sexo', datanascimento='$nascimento', funcao='$funcFuncionario', unidade='$unidadeEnsino' WHERE id='$id'";
-    
-                
-    //ENVIANDO A QUERY PARA O BANCO DE DADOS
-    $query = "UPDATE professores SET nome='$nome',cpf='$cpf',rg='$rg', telfix='$telFixo', telcel='$telCel', email='$email', sexo='$sexo', data_nasc='$nascimento', cargo='$funcFuncionario', unidade='$unidadeEnsino' WHERE id='$id'";
-    
+    if($funcFuncionario == "Comercial"){
+        $tabela = "comercial";
+    }else if($funcFuncionario == "Professor"){
+        $tabela = "professores";
+    }else if($funcFuncionario == "Recepcao"){
+        $tabela = "recepcao";
+    }  
+
+    $query = "UPDATE $tabela SET nome='$nome',cpf='$cpf',rg='$rg', telfix='$telFixo', telcel='$telCel', email='$email', sexo='$sexo', data_nasc='$nascimento', cargo='$funcFuncionario', unidade='$unidadeEnsino' WHERE id='$id'";
+
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conn->query($query)=== TRUE){
         header("Location: Carrega-Funcionario.php");
