@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include "Conexao.php";
-$sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 5");
+    $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 10");
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
               <div class="col s12 m6 offset-m3">
                 <div class="card z-depth-4">
                     <div class="card-image">
-                        <img src="Imagens/<?php echo $l["imagem"]; ?>">
+                        <img src="Img_Noticias/<?php echo $l["imagem"]; ?>">
                         <span class="card-title"> <?php echo $l["titulo"]; ?> </span>
                         <div class="fixed-action-btn click-to-toggle direction-top" style="position: absolute;">
                             <a class="btn-floating btn-flat red">
@@ -167,9 +167,9 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="Imagens/fundo.jpg">
+                        <img src="Img_Prog/Fundo.jpg">
                     </div>
-                    <a href="Gerencia.php"><img class="circle" src="Imagens/homens.png"></a>
+                    <a href="Gerencia.php"><img class="circle" src="Img_Prog/Masculino.png"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       

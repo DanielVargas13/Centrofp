@@ -1,13 +1,13 @@
 <?php 
     session_start();
     include "Conexao.php";
-    $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 10");
+$sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 5");
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Professores - Home</title>
+        <title>Recepcionista - Home</title>
         <meta charset="UTF-8">
         <meta name="discription" content="">
         <meta name="keywords" content="">
@@ -26,7 +26,7 @@
             <nav class="light-blue darken-3">
                 <div class="nav-content">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light modal-trigger" href="Professores.php"> Home </a></li>                       
+                        <li><a class="waves-effect waves-light modal-trigger" href="Recepcionista.php"> Home </a></li>                       
                         <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" > E-mails </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
@@ -110,20 +110,38 @@
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="Img_Prog/Fundo.jpg">
+                        <img src="Imagens/fundo.jpg">
                     </div>
-                    <a href="Professores.php"><img class="circle" src="Img_Prog/<?php  echo $_SESSION['usuarioFoto'] ?>"></a>
+                    <a href="Recepcionista.php"><img class="circle" src="Imagens/homens.png"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       
-            
             <li class="no-padding"> 
                 <ul class="collapsible collapsible-accordion">
-                    <li><a class="waves-effect collapsible-header " href="#"> Acesso as Turmas <i class="material-icons"> arrow_drop_down</i></a>
+                    <li><a class="waves-effect collapsible-header " href="#"> Gerência de Alunos <i class="material-icons"> arrow_drop_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href="Professor-Turmas.php"> Turma de Programação </a></li>                               
+                                <li><a class="waves-effect" href=""> Cadastro de Alunos </a></li> 
+                                <li><a class="waves-effect" href=""> Pesquisar Aluno </a></li>
+                                <li><a class="waves-effect" href=""> Desligar Aluno </a></li>   
+                                <li><a class="waves-effect" href=""> Gerar Declaração </a></li>
+                                <li><a class="waves-effect" href=""> Desligar Aluno </a></li>                                 
+                                </li>
+                            </ul>
+                        </div>
+                    </li>   
+                </ul>
+            </li>
+            <li><div class="divider"></div></li>   
+            <li class="no-padding"> 
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="waves-effect collapsible-header " href="#"> Contratos <i class="material-icons"> arrow_drop_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                <li><a class="waves-effect" href=""> Gerar contrato </a></li> 
+                                <li><a class="waves-effect" href=""> Consultar contratos </a></li>                                 
                                 </li>
                             </ul>
                         </div>
@@ -131,7 +149,52 @@
                 </ul>
             </li>
             
-            <li><div class="divider"></div></li>             
+            <li><div class="divider"></div></li>
+            <li class="no-padding"> 
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="waves-effect collapsible-header " href="#"> Horários de Aula <i class="material-icons"> arrow_drop_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                <li><a class="waves-effect" href=""> Informática </a></li>                                 
+                                </li>
+                            </ul>
+                        </div>
+                    </li>   
+                </ul>
+            </li>
+            <li><div class="divider"></div></li>    
+            <li class="no-padding"> 
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="waves-effect collapsible-header " href="#"> Financeiro <i class="material-icons"> arrow_drop_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                <li><a class="waves-effect" href=""> Registrar Vendas Mensais </a></li> 
+                                <li><a class="waves-effect" href=""> Registrar Pagamento </a></li>                                 
+                                </li>
+                            </ul>
+                        </div>
+                    </li>   
+                </ul>
+            </li>          
+            <li><div class="divider"></div></li> 
+             <li class="no-padding"> 
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="waves-effect collapsible-header " href="#"> Relatórios <i class="material-icons"> arrow_drop_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                <li><a class="waves-effect" href=""> Dados da matrícula </a></li> 
+                                <li><a class="waves-effect" href=""> Vencimentos de parcela </a></li>
+                                <li><a class="waves-effect" href=""> Alunos inadimplentes </a></li>                                  
+                                </li>
+                            </ul>
+                        </div>
+                    </li>   
+                </ul>
+            </li>
+            <li><div class="divider"></div></li> 
 
         
         <!-- Jquery-->

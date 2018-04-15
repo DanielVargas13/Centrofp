@@ -90,9 +90,9 @@
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="Imagens/fundo.jpg">
+                        <img src="Img_Prog/Fundo.jpg">
                     </div>
-                    <a href="Professores.php"><img class="circle" src="Imagens/homens.png"></a>
+                    <a href="Professores.php"><img class="circle"  src="Img_Prog/<?php  echo $_SESSION['usuarioFoto'] ?>"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       

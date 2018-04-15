@@ -1,7 +1,6 @@
 <?php 
     session_start();
     include "Conexao.php";
-$sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
 ?>
 
 <!DOCTYPE html>
@@ -205,18 +204,43 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                     insta.value = "";
                     insta.disabled = true;
 		}
-         }
+        }
          
-         //VALIDA TELEFONE
-         function validatelefone(){
-            var fixo = document.getElementById('cFixoChk');
-            var cel = document.getElementById('cCelChk');
-            if((fixo.disabled==true && cel.disabled==true) || (fixo.disabled==false && fixo.value=="") || (cel.disabled==false && cel.value=="")){
-                alert('Informe o Telefone de Contato!');
-                return false;
-            }
-            return true;
-         }
+        //VALIDA TELEFONE
+        function validatelefone(){
+           var fixo = document.getElementById('cFixoChk');
+           var cel = document.getElementById('cCelChk');
+           if((fixo.disabled==true && cel.disabled==true) || (fixo.disabled==false && fixo.value=="") || (cel.disabled==false && cel.value=="")){
+               alert('Informe o Telefone de Contato!');
+               return false;
+           }
+           return true;
+        }
+        
+        //Proibe Noticias
+        function loadProibeNoticias(){
+            alert('Vá para a tela inicial para postar uma Notícia!');
+            return false;
+        }
+        
+        //Proibe E-mails
+        function loadProibeEmails(){
+            alert('Vá para a tela inicial para enviar um E-mail!');
+            return false;
+        }
+        
+        //Seleciona o tipo de inserção
+        function myFunction(val){
+            if(val == "Comercial"){
+                document.formCad1.action = "Inserir-Comercial.php";
+            }else if(val == "Professor"){
+                document.formCad1.action = "Inserir-Professor.php";
+            }else if(val == "Recepcao"){
+                document.formCad1.action = "Inserir-Recepcionista.php";
+            }  
+        }
+
+         
        
         </script>        
         
@@ -234,9 +258,9 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="Imagens/fundo.jpg">
+                        <img src="Img_Prog/Fundo.jpg">
                     </div>
-                    <a href="Gerencia.php"><img class="circle" src="Imagens/homens.png"></a>
+                    <a href="Gerencia.php"><img class="circle" src="Img_Prog/Masculino.png"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       
@@ -291,8 +315,8 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                 <div class="nav-content">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light modal-trigger" href="Gerencia.php"> Home </a></li>
-                        <li><a class="waves-effect waves-light modal-trigger" href="#Noticias"> Notícias </a></li>
-                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" > E-mails </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="#Noticias" onclick="loadProibeNoticias()"> Notícias </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" onclick="loadProibeEmails()"> E-mails </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
                     </ul>
@@ -306,7 +330,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                 <div class="card-panel z-depth-5 ">
                     <h3 class="center"> Cadastro </h3>
                     <div class="row">
-                        <form method="POST" name="formCad1" id="formCad" action="Inserir-Funcionario.php" enctype="multipart/form-data">
+                        <form method="POST" name="formCad1" id="formCad" action="" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix"> account_box </i>
@@ -367,25 +391,16 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                                         <i class="material-icons prefix left"> contacts </i>                             
                                    </div>
                                    <div class="col s6 m6">
-                                        <select name="tTrabalho" id="cTrabalho">
-                                            <option value="" disabled selected> Selecione o Cargo </option>
-                                            <option value="Comercial"> Comercial </option>
-                                            <option value="Professor" > Professor</option>
-                                            <option value="Coordenação"> Recepção </option>
-                                      </select>
+                                        <select id="cCargo" name="tCargo" onchange="myFunction(this.value)">
+                                            <option value="" disabled selected > Selecione o Cargo </option>
+                                            <option value="Comercial" Onclick="myFunction('Comercial')"> Comercial </option>
+                                            <option value="Professor" OnClick="myFunction('Professor')"> Professor</option>
+                                            <option value="Coordenacao" Onclick="myFunction('Recepcao')"> Recepção </option>
+                                        </select>
                                     </div>                                   
                                 </div>                                
-                            </div>                    
-                            <div class="row">
-                                <input type="hidden"  name="tITrabalho" id="cITrabalho" />
-                                    <div class="col s12">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">library_books </i>
-                                                <input type="text" id="cCursos" class="autocomplete" disabled>
-                                                <label for="autocomplete-input"> Selecione o Curso do Funcionário </label>
-                                            </div>
-                                    </div>            
-                            </div> 
+                            </div>                
+                            <input type="hidden" name="tICargo" id="cICargo" />   
                             <div class="row center">
                                 <div class="input-field col s10 offset-s2">
                                    <div class="col s2">
@@ -428,30 +443,13 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
               $('select').material_select();
             });
         </script>
-        
-        <script>
-            $('#cTrabalho').change(function() {
-              if($('#cTrabalho').val()== "Professor"){
-                  $('#cCursos').prop("disabled",false);
-              }else{
-                  $('#cCursos').prop("disabled",true);
-              }
-              $('select').material_select();
-            });
-        </script>
-        
+       
         <!-- INICIALIZA OS HIDDEN DOS SELECTS -->
         <script>
             $(document).ready(function() {
                 $('select').material_select();
-                $('#cTrabalho').on('change', function() {
-                $('#cITrabalho').val($('#cTrabalho').val());
-                });
-            });
-            $(document).ready(function() {
-                $('select').material_select();
-                $('#cCursos').on('change', function() {
-                $('#cICursos').val($('#cCursos').val());
+                $('#cCargo').on('change', function() {
+                $('#cICargo').val($('#cCargo').val());
                 });
             });
             $(document).ready(function() {
@@ -460,49 +458,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias LIMIT 5");
                 $('#cIUnidade').val($('#cUnidade').val());
                 });
             });
-        </script>
-
-        <script>
-            $(document).ready(function () {$('input.autocomplete').autocomplete({
-                data: {
-                    "Assistente Administrativo": null,
-                    "Auto Cad": null,
-                    "Windows": null,
-                    "Word": null,
-                    "Excel": null,
-                    "Internet + Antivirus": null,
-                    "Power Point": null,
-                    "Excel Avançado": null,
-                    "Corel Draw": null,
-                    "Front Page": null,
-                    "PhotoShop": null,
-                    "Digitação": null,
-                    "AdobeAcrobat": null,
-                    "Marketing Pessoal": null,
-                    "Treinamento Empresarial": null,
-                    "Departamento Pessoal": null,
-                    "Contabilidade": null,
-                    "Fiscal": null,
-                    "Manicure e Pedicure": null,
-                    "Maquiagem Profissional": null,
-                    "Designer de Sobrancelha": null,
-                    "Atendente de Farmácia": null,
-                    "Informática Kids": null,
-                    "Manutenção de Celular": null,
-                    "Fireworks": null,
-                    "Montagem e Manutenção de Computadores": null,
-                    "Redes de Computadores": null,
-                    "Illustrator": null,
-                    "InDesign": null,
-                    "Fotografia Digital": null,
-                    "Inglês": null,
-                    "Inglês Kids": null,
-                    "Espanhol": null,
-                    "Barbeiro Profissional": null,
-                    "Reforço Escolar": null,
-                    "Maquiagem": null,
-            }});});        
-        </script>  
+        </script> 
         
         <!-- SIDENAV-->
         <script>

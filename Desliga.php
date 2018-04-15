@@ -1,16 +1,6 @@
 <?php 
-    //CONECTANDO COM O BANCO DE DADOS
-    $servidor = "localhost";
-    $usuario = "root";
-    $senha = "";
-    $dbname = "cfp";
-
-    $conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
-    if($conexao ->connect_error){
-        echo "Erro na conexão";
-    }else{
-        echo "Conectado com sucesso";
-    }
+    session_start();
+    include "Conexao.php";
                 
     //INICIALIZANDO AS VARIÁVEIS
     $id = intval($_GET['id']);
@@ -23,7 +13,7 @@
     if($conexao->query($query)=== TRUE){
         header("Location: Desligar-Funcionario.php");
     }else{
-        echo "Erro ao Deletar";
+        echo "Erro ao Inserir";
     }
 
     //ENCERRANDO A CONEXÃO

@@ -53,7 +53,7 @@
         
         <style>
             body{
-                background-image: url("Imagens/Plano-Fundo.jpg");
+                background-image: url("Img_Prog/Plano-Fundo-Index.jpg");
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-attachment: fixed;

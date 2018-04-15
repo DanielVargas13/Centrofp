@@ -16,7 +16,7 @@
      if(isset($_FILES['arquivo'])){
         $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));//PEGA O TIPO DO ARQUIVO DO NOME COMO POR EXEMPLO .JPG OU .PNG
         $novo_nome = md5(time()).$extensao;//NOME CRIPTOGRAFADO
-        $diretorio = "Imagens/";            
+        $diretorio = "Img_Noticias/";            
         move_uploaded_file($_FILES['arquivo']['tmp_name'],$diretorio.$novo_nome);            
     }
                 
@@ -25,7 +25,7 @@
     $descricao = isset($_POST['tDescricao']) ? $_POST['tDescricao']: '';
                 
     //ENVIANDO A QUERY PARA O BANCO DE DADOS
-    $query = "INSERT INTO noticias(titulo,descricao,data,imagem,gerente_id) VALUES('$titulo','$descricao',NOW(),'$novo_nome',1)";
+    $query = "INSERT INTO noticias(titulo,descricao,data,imagem) VALUES('$titulo','$descricao',NOW(),'$novo_nome')";
     
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conexao->query($query)=== TRUE){

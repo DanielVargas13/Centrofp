@@ -1,13 +1,13 @@
 <?php 
     session_start();
     include "Conexao.php";
-    $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 10");
+$sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 5");
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Professores - Home</title>
+        <title>Alunos - Home</title>
         <meta charset="UTF-8">
         <meta name="discription" content="">
         <meta name="keywords" content="">
@@ -26,7 +26,7 @@
             <nav class="light-blue darken-3">
                 <div class="nav-content">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a class="waves-effect waves-light modal-trigger" href="Professores.php"> Home </a></li>                       
+                        <li><a class="waves-effect waves-light modal-trigger" href="Alunos.php"> Home </a></li>                       
                         <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" > E-mails </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
@@ -64,12 +64,7 @@
                             <label for="cNome">Nome: </label><input class="active validate" type="text" name="tNome" id="cNome" maxlength="50" placeholder="Seu nome completo" pattern="[A-Za-z\s]+$" required>
                         </div>
                     </div>         
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix"> email </i>
-                            <label> E-mail: </label><input class="active validate" type="email" name="tMail" id="cMail" maxlength="30" placeholder="E-mail do destinatário" required>
-                        </div>
-                    </div>  
+                    <input class="active validate" value="#" type="email" name="tMail" id="cMail" maxlength="30" hidden> 
                     <div class="row">
                      <div class="input-field col s12">
                             <i class="material-icons prefix"> chat </i>
@@ -82,17 +77,6 @@
                             <textarea id="cMensagem" name="tMensagem" class="materialize-textarea active validate" placeholder="Mensagem a ser Enviada" required></textarea>
                             <label for="textarea1"> Mensagem </label>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="file-field input-field">
-                            <div class="btn waves-effect waves-light light-blue darken-3">
-                                <span> Arquivos </span>
-                                <input type="file"  multiple>
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="Upload de Arquivos">
-                            </div>
-                        </div> 
                     </div>
 
                     <button class="btn waves-effect waves-light light-blue darken-3 right" type="submit" onclick="return valida()"> Enviar
@@ -110,28 +94,50 @@
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="Img_Prog/Fundo.jpg">
+                        <img src="Imagens/fundo.jpg">
                     </div>
-                    <a href="Professores.php"><img class="circle" src="Img_Prog/<?php  echo $_SESSION['usuarioFoto'] ?>"></a>
+                    <a href="Alunos.php"><img class="circle" src="Imagens/homens.png"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       
-            
+
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="waves-effect collapsible-header " href="#"> Informações da Turma </a>
+                    </li>   
+                </ul>
+            </li>
+            <li><div class="divider"></div></li>    
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="waves-effect collapsible-header " href="#"> Material Didático </a>
+                    </li>   
+                </ul>
+            </li>
+            <li><div class="divider"></div></li>
             <li class="no-padding"> 
                 <ul class="collapsible collapsible-accordion">
-                    <li><a class="waves-effect collapsible-header " href="#"> Acesso as Turmas <i class="material-icons"> arrow_drop_down</i></a>
+                    <li><a class="waves-effect collapsible-header " href="#"> Horários <i class="material-icons"> arrow_drop_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href="Professor-Turmas.php"> Turma de Programação </a></li>                               
+                                <li><a class="waves-effect" href=""> Tabela de Horários </a></li>   
+                                <li><a class="waves-effect" href=""> Horários - Informática </a></li>                              
                                 </li>
                             </ul>
                         </div>
                     </li>   
                 </ul>
             </li>
-            
-            <li><div class="divider"></div></li>             
+            <li><div class="divider"></div></li>
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="waves-effect collapsible-header " href="#"> Documentos </a>
+                    </li>   
+                </ul>
+            </li>
+            <li><div class="divider"></div></li>
+                   
 
         
         <!-- Jquery-->

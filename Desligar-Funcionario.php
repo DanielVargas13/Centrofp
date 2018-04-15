@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include "Conexao.php";
-$sql_banco = mysqli_query($conn, "SELECT * FROM funcionarios");
+    $sql_banco = mysqli_query($conn, "SELECT * FROM professores");
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +19,22 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM funcionarios");
         <!-- Materialize CSS-->
         <link rel="stylesheet" href="css/materialize.min.css">
         
+        <script>
+            
+        //Proibe Noticias
+        function loadProibeNoticias(){
+            alert('Vá para a tela inicial para postar uma Notícia!');
+            return false;
+        }
+        
+        //Proibe E-mails
+        function loadProibeEmails(){
+            alert('Vá para a tela inicial para enviar um E-mail!');
+            return false;
+        }        
+        
+        </script>
+        
     </head>
     <body class="grey lighten-2">
 
@@ -33,9 +49,9 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM funcionarios");
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="Imagens/fundo.jpg">
+                        <img src="Img_Prog/Fundo.jpg">
                     </div>
-                    <a href="Gerencia.php"><img class="circle" src="Imagens/homens.png"></a>
+                    <a href="Gerencia.php"><img class="circle" src="Img_Prog/Masculino.png"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       
@@ -90,8 +106,8 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM funcionarios");
                 <div class="nav-content">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light modal-trigger" href="Gerencia.php"> Home </a></li>                        
-                        <li><a class="waves-effect waves-light modal-trigger" href="#Noticias"> Notícias </a></li>
-                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" > E-mails </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="#Noticias" onclick="loadProibeNoticias()"> Notícias </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" onclick="loadProibeEmails()"> E-mails </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
                     </ul>
