@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include "Conexao.php";
-$sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 5");
+    $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 5");
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +110,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="Imagens/fundo.jpg">
+                        <img src="Img_Prog/Fundo.jpg">
                     </div>
                     <a href="Recepcionista.php"><img class="circle" src="Img_Prog/<?php  echo $_SESSION['usuarioFoto'] ?>"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
@@ -122,11 +122,9 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Cadastro de Alunos </a></li> 
+                                <li><a class="waves-effect" href="Cadastro-Alunos.php"> Cadastro de Alunos </a></li> 
                                 <li><a class="waves-effect" href=""> Pesquisar Aluno </a></li>
-                                <li><a class="waves-effect" href=""> Desligar Aluno </a></li>   
-                                <li><a class="waves-effect" href=""> Gerar Declaração </a></li>
-                                <li><a class="waves-effect" href=""> Desligar Aluno </a></li>                                 
+                                <li><a class="waves-effect" href=""> Desligar Aluno </a></li>                                  
                                 </li>
                             </ul>
                         </div>
@@ -136,11 +134,12 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMI
             <li><div class="divider"></div></li>   
             <li class="no-padding"> 
                 <ul class="collapsible collapsible-accordion">
-                    <li><a class="waves-effect collapsible-header " href="#"> Contratos <i class="material-icons"> arrow_drop_down</i></a>
+                    <li><a class="waves-effect collapsible-header " href="#"> Documentos <i class="material-icons"> arrow_drop_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Gerar contrato </a></li> 
+                                <li><a class="waves-effect" href=""> Gerar Declaração para Alunos </a></li>
+                                <li><a class="waves-effect" href="Contrato-Aluno.php"> Gerar contrato para Alunos </a></li> 
                                 <li><a class="waves-effect" href=""> Consultar contratos </a></li>                                 
                                 </li>
                             </ul>

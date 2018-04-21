@@ -1,7 +1,6 @@
 <?php 
     session_start();
     include "Conexao.php";
-        $sql_banco = mysqli_query($conn, "SELECT * FROM turmas ORDER BY curso");
 ?>
 
 <!DOCTYPE html>
@@ -268,6 +267,11 @@
                 </table>   
           <br><br>
            <div class="center"> 
+           <a href="Pesquisar-Turma.php">
+                <button class="btn waves-effect waves-light light-blue darken-3" type="button"> Voltar
+                    <i class="material-icons right"> send </i>    
+                </button>&nbsp;&nbsp;&nbsp;  
+                </a>
            <button class="btn waves-effect waves-light light-blue darken-3" id="btnMod" type="submit" onclick="verificaCampos()"> Alterar
                                     <i class="material-icons right"> edit </i>    
                                 </button> 
@@ -295,19 +299,7 @@
                     $("#side").sideNav();
                 });
             </script>  
-            
-        <!-- AUTOCOMPLETE NOME DO CURSO-->
-        <script>
-            $(document).ready(function(){
-              $('#search').autocomplete({
-                data: {
-                    <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
-                        "<?php echo $l["curso"]; ?>": null,
-                    <?php } ?>
-                },
-              });
-            });      
-        </script> 
+             
         <script>
             $(document).ready(function() {
               $('select').material_select();

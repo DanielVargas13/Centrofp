@@ -100,7 +100,6 @@
                                 <li>
                                 <li><a class="waves-effect" href="Cadastro-Turma.php"> Cadastro de Turma </a></li> 
                                 <li><a class="waves-effect" href="Carrega-Turma.php"> Pesquisa de Turma </a></li>
-                                <li><a class="waves-effect" href="####">  Remover Turma </a></li>  
 
                                 </li>
                             </ul>
@@ -126,6 +125,7 @@
                         <li><a class="waves-effect waves-light modal-trigger" href="Gerencia.php"> Home </a></li>                        
                         <li><a class="waves-effect waves-light modal-trigger" href="#Noticias" onclick="loadProibeNoticias()"> Notícias </a></li>
                         <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" onclick="loadProibeEmails()"> E-mails </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="Alterar-Conta.php" > Conta </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
                     </ul>
@@ -151,7 +151,7 @@
                 <tr>
                     <td> <?php echo $l["nome"]; ?></td>
                      <td> <?php echo $l["cargo"]; ?></td>
-                    <td><a href="javascript: if(confirm('Tem certeza que deseja desligar o funcionário <?php echo $l["nome"]; ?> ?')) location.href='Desliga-Funcionario.php?id=<?php echo $l["id"]; ?>&cargo=<?php echo $l["cargo"]; ?>';"> <button class='btn-floating waves-effect waves-light light-blue darken-3' type='button' onclick=''>
+                    <td><a href="javascript: if(confirm('Tem certeza que deseja desligar o funcionário <?php echo $l["nome"]; ?> ?')) location.href='Desliga-Funcionario.php?id=<?php echo $l["id"]; ?>&cargo=<?php echo $l["cargo"]; ?>';"> <button class='btn-floating waves-effect waves-light red darken-3' type='button' onclick=''>
                         <i class='material-icons right'> close </i>    
             </button></a></td>
                 </tr>

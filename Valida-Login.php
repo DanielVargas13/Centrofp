@@ -26,8 +26,11 @@
             $_SESSION['loginErro'] = "Usuário ou senha Inválido";
             header("Location: index.php");
         }else if(isset($resultado)){
+             $_SESSION['usuarioId'] = $resultado['id'];
             $_SESSION['usuarioNome'] = $resultado['nome'];
             $_SESSION['usuarioFoto'] = $resultado['foto'];
+            $_SESSION['usuarioEmail'] = $resultado['email'];
+            $_SESSION['usuarioSenha'] = $resultado['senha'];
             if($cargo == "Aluno"){
                 header("Location: Alunos.php");
             }else if($cargo == "Gerencia"){

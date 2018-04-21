@@ -192,8 +192,7 @@
                             <ul>
                                 <li>
                                 <li><a class="waves-effect" href="Cadastro-Turma.php"> Cadastro de Turma </a></li> 
-                                <li><a class="waves-effect" href="Carrega-Turma.php"> Pesquisa de Turma </a></li>
-                                <li><a class="waves-effect" href="####">  Remover Turma </a></li>  
+                                <li><a class="waves-effect" href="Carrega-Turma.php"> Pesquisa de Turma </a></li>  
 
                                 </li>
                             </ul>
@@ -219,6 +218,7 @@
                         <li><a class="waves-effect waves-light modal-trigger" href="Gerencia.php"> Home </a></li>
                         <li><a class="waves-effect waves-light modal-trigger" href="#Noticias" onclick="loadProibeNoticias()"> Notícias </a></li>
                         <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" onclick="loadProibeEmails()"> E-mails </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="Alterar-Conta.php" > Conta </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
                     </ul>

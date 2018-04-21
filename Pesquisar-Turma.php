@@ -1,6 +1,7 @@
 <?php 
     session_start();
     include "Conexao.php";
+        $sql_banco = mysqli_query($conn, "SELECT * FROM turmas ORDER BY curso");
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +19,23 @@
         <!-- Materialize CSS-->
         <link rel="stylesheet" href="css/materialize.min.css">
         
+       <script>
+
+        //Proibe Noticias
+        function loadProibeNoticias(){
+            alert('Vá para a tela inicial para postar uma Notícia!');
+            return false;
+        }
+        
+        //Proibe E-mails
+        function loadProibeEmails(){
+            alert('Vá para a tela inicial para enviar um E-mail!');
+            return false;
+        }        
+        
+
+        </script> 
+        
     </head>
     <body class="grey lighten-2">
 
@@ -28,13 +46,13 @@
             }
         ?>
         
-        <ul id="slide-out" class="side-nav">           
+<ul id="slide-out" class="side-nav">           
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="Imagens/fundo.jpg">
+                        <img src="Img_Prog/Fundo.jpg">
                     </div>
-                    <a href="Gerencia.php"><img class="circle" src="Imagens/homens.png"></a>
+                    <a href="Gerencia.php"><img class="circle" src="Img_Prog/Masculino.png"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       
@@ -63,10 +81,27 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                               <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
+                                <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
                                 <li><a class="waves-effect" href="Carrega-Curso.php"> Pesquisa de Curso </a></li>
-                                <li><a class="waves-effect" href="Desligar-Curso.php"> Desligar Funcionário </a></li>  
-                                <li><a class="waves-effect" href=""> Cadastro de Turma </a></li> 
+                                <li><a class="waves-effect" href="Desligar-Curso.php">  Remover Curso </a></li>  
+                                </li>
+                            </ul>
+                        </div>
+                    </li>   
+                </ul>
+            </li>
+
+            <li><div class="divider"></div></li>
+            
+            <li class="no-padding"> 
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="waves-effect collapsible-header " href="#"> Gerência de Turmas <i class="material-icons"> arrow_drop_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                <li><a class="waves-effect" href="Cadastro-Turma.php"> Cadastro de Turma </a></li> 
+                                <li><a class="waves-effect" href="Carrega-Turma.php"> Pesquisa de Turma </a></li>
+
                                 </li>
                             </ul>
                         </div>
@@ -83,14 +118,14 @@
             </li> 
             <li><div class="divider"></div></li>            
         </ul>
-        
         <div class="navbar-fixed">
             <nav class="light-blue darken-3">
                 <div class="nav-content">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light modal-trigger" href="Gerencia.php"> Home </a></li>                        
-                        <li><a class="waves-effect waves-light modal-trigger" href="#Noticias"> Notícias </a></li>
-                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" > E-mails </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="#Noticias" onclick="loadProibeNoticias()"> Notícias </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" onclick="loadProibeEmails()"> E-mails </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="Alterar-Conta.php" > Conta </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
                     </ul>
@@ -98,9 +133,9 @@
             </nav>         
         </div>        
         
-      <br><br><br>
-    
-        <div class="row">
+        <br><br><br>
+          
+              <div class="row">
             <div class="col s10 m8 16 container center z-depth-5 offset-s1 offset-m2">
                 <div class="card-panel z-depth-5">
                     <h3 class="center"> Pesquisar Turmas </h3>
@@ -145,7 +180,7 @@
                 </tr>
             </thead>
             <tbody>
-            <?php foreach($_SESSION['usuarioTur'] as &$l){ ?>
+            <?php if(isset($_SESSION['usuarioTur'])) foreach($_SESSION['usuarioTur'] as &$l){ ?>
                 <tr>
                     <td> <?php echo $l["curso"]; ?></td>
                     <td> <?php echo $l["prof"]; ?></td>
@@ -153,18 +188,13 @@
                    <td><a href="Seleciona-Turma.php?id=<?php echo $l["id"]; ?>"> <button class='btn-floating waves-effect waves-light light-blue darken-3' type='button' onclick=''>
                         <i class='material-icons right'> edit </i>    
             </button></a></td>
+               <td><a href="javascript: if(confirm('Tem certeza que deseja remover a turma de <?php echo $l["curso"]; ?> do professor <?php echo $l["prof"]; ?> ?')) location.href='Desliga-Turma.php?id=<?php echo $l["id"]; ?>';"> <button class='btn-floating waves-effect waves-light red darken-3' type='button' onclick=''>
+                        <i class='material-icons right'> close </i>    
+            </button></a></td>
                 </tr>
                 <?php }?>
             </tbody>
         </table>   
-        <br><br>
-         <div class="center"> 
-                      <a href="Gerencia.php">
-                      <button class="btn waves-effect waves-light light-blue darken-3" type="button"> Voltar
-                          <i class="material-icons right"> send </i>    
-                      </button>
-                      </a>         
-          </div>
             </div>
             </div>
             </div>
@@ -183,6 +213,18 @@
                     $("#side").sideNav();
                 });
             </script>  
+            <!-- AUTOCOMPLETE NOME DO CURSO-->
+        <script>
+            $(document).ready(function(){
+              $('#search').autocomplete({
+                data: {
+                    <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
+                        "<?php echo $l["curso"]; ?>": null,
+                    <?php } ?>
+                },
+              });
+            });      
+        </script>
         
     </body>
 </html>
