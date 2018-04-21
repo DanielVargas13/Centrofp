@@ -280,8 +280,26 @@
                                 <li>
                                 <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
                                 <li><a class="waves-effect" href="Carrega-Curso.php"> Pesquisa de Curso </a></li>
-                                <li><a class="waves-effect" href="Desligar-Curso.php"> Desligar Funcionário </a></li>  
-                                <li><a class="waves-effect" href=""> Cadastro de Turma </a></li> 
+                                <li><a class="waves-effect" href="Desligar-Curso.php">  Remover Curso </a></li>  
+                                </li>
+                            </ul>
+                        </div>
+                    </li>   
+                </ul>
+            </li>
+
+            <li><div class="divider"></div></li>
+            
+            <li class="no-padding"> 
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="waves-effect collapsible-header " href="#"> Gerência de Turmas <i class="material-icons"> arrow_drop_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                <li><a class="waves-effect" href="Cadastro-Turma.php"> Cadastro de Turma </a></li> 
+                                <li><a class="waves-effect" href="Carrega-Turma.php"> Pesquisa de Turma </a></li>
+                                <li><a class="waves-effect" href="####">  Remover Turma </a></li>  
+
                                 </li>
                             </ul>
                         </div>

@@ -22,6 +22,20 @@
         <!-- Materialize CSS-->
         <link rel="stylesheet" href="css/materialize.min.css">
         
+        <script>
+            //Proibe Noticias
+            function loadProibeNoticias(){
+                alert('Vá para a tela inicial para postar uma Notícia!');
+                return false;
+            }
+
+            //Proibe E-mails
+            function loadProibeEmails(){
+                alert('Vá para a tela inicial para enviar um E-mail!');
+                return false;
+            }           
+        </script>
+        
     </head>
     <body class="grey lighten-4">
         
@@ -32,13 +46,13 @@
             }
         ?>
 
-        <ul id="slide-out" class="side-nav">           
+<ul id="slide-out" class="side-nav">           
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="Imagens/fundo.jpg">
+                        <img src="Img_Prog/Fundo.jpg">
                     </div>
-                    <a href="Gerencia.php"><img class="circle" src="Imagens/homens.png"></a>
+                    <a href="Gerencia.php"><img class="circle" src="Img_Prog/Masculino.png"></a>
                     <a href=""><span class="white-text"> <?php  echo $_SESSION['usuarioNome'] ?></a>
                 </div>
             </li>       
@@ -69,8 +83,26 @@
                                 <li>
                                 <li><a class="waves-effect" href="Cadastro-Curso.php"> Cadastro de Curso </a></li> 
                                 <li><a class="waves-effect" href="Carrega-Curso.php"> Pesquisa de Curso </a></li>
-                                <li><a class="waves-effect" href="Desligar-Curso.php"> Desligar Funcionário </a></li>  
-                                <li><a class="waves-effect" href=""> Cadastro de Turma </a></li> 
+                                <li><a class="waves-effect" href="Desligar-Curso.php">  Remover Curso </a></li>  
+                                </li>
+                            </ul>
+                        </div>
+                    </li>   
+                </ul>
+            </li>
+
+            <li><div class="divider"></div></li>
+            
+            <li class="no-padding"> 
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="waves-effect collapsible-header " href="#"> Gerência de Turmas <i class="material-icons"> arrow_drop_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                <li><a class="waves-effect" href="Cadastro-Turma.php"> Cadastro de Turma </a></li> 
+                                <li><a class="waves-effect" href="Carrega-Turma.php"> Pesquisa de Turma </a></li>
+                                <li><a class="waves-effect" href="####">  Remover Turma </a></li>  
+
                                 </li>
                             </ul>
                         </div>
@@ -93,8 +125,8 @@
                 <div class="nav-content">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light modal-trigger" href="Gerencia.php"> Home </a></li>
-                        <li><a class="waves-effect waves-light modal-trigger" href="#Noticias"> Notícias </a></li>
-                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" > E-mails </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="#Noticias" onclick="loadProibeNoticias()"> Notícias </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" onclick="loadProibeEmails()"> E-mails </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
                     </ul>
@@ -113,7 +145,7 @@
                              <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix"> account_box </i>
-                            <label for="cTitulo">Titulo: </label><input class="active validate" value="<?php echo $r["titulo"]; ?>" type="text" name="tTitulo" id="cTitulo" maxlength="50" placeholder="Titulo da notícia" pattern="[A-Za-z\s]+$" required>
+                            <label for="cTitulo">Titulo: </label><input class="active validate" value="<?php echo $r["titulo"]; ?>" type="text" name="tTitulo" id="cTitulo" maxlength="50" placeholder="Titulo da notícia" required>
                         </div>
                     </div>         
                     <div class="row">
