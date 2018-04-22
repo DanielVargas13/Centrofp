@@ -161,8 +161,6 @@
                                 <li>
                                 <li><a class="waves-effect" href="Cadastro-Turma.php"> Cadastro de Turma </a></li> 
                                 <li><a class="waves-effect" href="Carrega-Turma.php"> Pesquisa de Turma </a></li>
-                                <li><a class="waves-effect" href="####">  Remover Turma </a></li>  
-
                                 </li>
                             </ul>
                         </div>

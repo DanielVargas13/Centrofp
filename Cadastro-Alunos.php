@@ -299,7 +299,7 @@
                                 <li>
                                 <li><a class="waves-effect" href="Cadastro-Alunos.php"> Cadastro de Alunos </a></li> 
                                 <li><a class="waves-effect" href=""> Pesquisar Aluno </a></li>
-                                <li><a class="waves-effect" href=""> Desligar Aluno </a></li>                                 
+                                <li><a class="waves-effect" href="Desligar-Aluno.php"> Desligar Aluno </a></li>                                 
                                 </li>
                             </ul>
                         </div>
@@ -314,8 +314,7 @@
                             <ul>
                                 <li>
                                 <li><a class="waves-effect" href=""> Gerar Declaração para Alunos </a></li>
-                                <li><a class="waves-effect" href=""> Gerar contrato para Alunos </a></li> 
-                                <li><a class="waves-effect" href=""> Consultar contratos </a></li>                                 
+                                <li><a class="waves-effect" href=""> Gerar contrato para Alunos </a></li>                                
                                 </li>
                             </ul>
                         </div>

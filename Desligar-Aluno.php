@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Gerar Contrato</title>
+        <title> Remover Aluno - Home</title>
         <meta charset="UTF-8">
         <meta name="discription" content="">
         <meta name="keywords" content="">
@@ -20,18 +20,18 @@
         <link rel="stylesheet" href="css/materialize.min.css">
         
         <script>
-
-       //Proibe E-mails
+            
+            //Proibe E-mails
             function loadProibeEmails(){
                 alert('Vá para a tela inicial para enviar um E-mail!');
                 return false;
             }
-
+            
         </script>
         
     </head>
-    <body class="grey lighten-2">
-
+    <body class="grey lighten-4">
+        
         <div class="navbar-fixed">
             <nav class="light-blue darken-3">
                 <div class="nav-content">
@@ -65,7 +65,7 @@
                                 <li>
                                 <li><a class="waves-effect" href="Cadastro-Alunos.php"> Cadastro de Alunos </a></li> 
                                 <li><a class="waves-effect" href=""> Pesquisar Aluno </a></li>
-                                <li><a class="waves-effect" href=""> Desligar Aluno </a></li>                                 
+                                <li><a class="waves-effect" href="Desligar-Aluno.php"> Desligar Aluno </a></li>                                  
                                 </li>
                             </ul>
                         </div>
@@ -80,7 +80,8 @@
                             <ul>
                                 <li>
                                 <li><a class="waves-effect" href=""> Gerar Declaração para Alunos </a></li>
-                                <li><a class="waves-effect" href="Contrato-Aluno.php"> Gerar contrato para Alunos </a></li>                               
+                                <li><a class="waves-effect" href="Contrato-Aluno.php"> Gerar contrato para Alunos </a></li> 
+                                
                                 </li>
                             </ul>
                         </div>
@@ -134,59 +135,56 @@
                 </ul>
             </li>
             <li><div class="divider"></div></li> 
-        </ul>  
+        </ul>    
         
-        <br><br><br>
-            <div class="row">
-                <div class="col s10 m6 16 container center z-depth-5 offset-m3 offset-s1">
+        <div class="row">
+            <div class="col s10 m6 16 container center z-depth-5 offset-m3 offset-s1">
                 <div class="card-panel z-depth-5 ">    
+                    <table class="bordered highlight">
+                        <thead>
+                            <tr>
+                                <th> Nome </th>
+                                <th> Turma </th>
+                                <th> Desligar </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
+                            <tr>
+                                <td> <?php echo $l["nome"]; ?></td>
+                                <td> <?php echo $l["turma"]; ?></td>
+                                <td><a href="javascript: if(confirm('Tem certeza que deseja desligar o aluno <?php echo $l["nome"]; ?> do sistema?')) location.href='Desliga-Aluno.php?id=<?php echo $l["id"]; ?>&turma=<?php echo $l["turma"]; ?>';"> <button class='btn-floating waves-effect waves-light red darken-3' type='button' onclick=''>
+                                    <i class='material-icons right'> close </i>    
+                                </button></a></td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>   
+                    <br><br>
+                        <div class="center"> 
+                            <a href="Recepcionista.php">
+                                <button class="btn waves-effect waves-light light-blue darken-3" type="button"> Voltar
+                                    <i class="material-icons right"> send </i>    
+                                </button>
+                            </a>         
+                      </div>
+                </div>
+            </div>
+        </div>
 
-        <table class="bordered highlight">
-            <thead>
-                <tr>
-                   <th>Nº de Matricula</th>
-                    <th> Nome </th>
-                    <th> Gerar Contrato </th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
-                <tr>
-                   <td> <?php echo $l["matricula"]; ?></td>
-                    <td> <?php echo $l["nome"]; ?></td>
-                    <td><a href="Gerar-Contrato.php?id=<?php echo $l["id"]; ?>" target="_blank"> <button class='btn-floating waves-effect waves-light green darken-3' type='button' onclick=''>
-                        <i class='material-icons right'> border_color </i>    
-            </button></a></td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table>   
-        <br><br>
-         <div class="center"> 
-                      <a href="Recepcionista.php">
-                      <button class="btn waves-effect waves-light light-blue darken-3" type="button"> Voltar
-                          <i class="material-icons right"> send </i>    
-                      </button>
-                      </a>         
-          </div>
-            </div>
-            </div>
-            </div>
-            <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-            <!-- Jquery -->
-            <script type="text/javascript"
-            accesskey=""src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-            <!-- Materialize JS -->
-            <script src="js/materialize.js"></script>  
-            
-            <!-- SIDENAV-->
-            <script>
-                $(document).ready(function(){
-                    $("#side").sideNav();
-                });
-            </script>  
         
+        <!-- Jquery-->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!--Materialize JS-->
+        <script src="js/materialize.min.js"></script>
+    
+        <!--SIDENAV-->
+        <script>
+            $(document).ready(function(){
+                $("#side").sideNav();
+            });
+        </script>
+
     </body>
 </html>

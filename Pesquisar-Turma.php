@@ -144,7 +144,7 @@
 			<nav>
                             <div class="nav-wrapper">
 				<div class="input-field grey lighten-1">
-                                    <input id="search" name="tNome" type="search" placeholder="Digite o Nome do Curso" required> 
+                                    <input id="search" name="tNome" type="search" placeholder="Digite o Nome do Curso" autocomplete="off" required> 
                                     <label class="label-icon" for="search"><i class="material-icons">search</i></label> 
                                     <i class="material-icons">close</i>
                                 </div>
