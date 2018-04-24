@@ -28,6 +28,7 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light modal-trigger" href="Professores.php"> Home </a></li>                       
                         <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" > E-mails </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="Alterar-Conta.php" > Conta </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
                     </ul>

@@ -11,6 +11,15 @@
         $resultado = mysqli_fetch_assoc($result);
         
         if(isset($resultado)){
+            $id = $resultado['turma_id'];
+            $turma_b = mysqli_query($conn, "SELECT curso_id,turno,unidadeensino FROM turmas WHERE id='$id'");
+            $turma = mysqli_fetch_assoc($turma_b);
+            $idc = $turma['curso_id'];
+            
+            $curso_b = mysqli_query($conn, "SELECT nome FROM cursos WHERE id='$idc'");
+            $curso = mysqli_fetch_assoc($curso_b);
+
+            
             $_SESSION['usuarioIdAlu'] = $resultado['id'];
             $_SESSION['usuarioNomeAlu'] = $resultado['nome'];
             $_SESSION['usuarioMatAlu'] = $resultado['matricula'];
@@ -25,12 +34,13 @@
             $_SESSION['usuarioSexoAlu'] = $resultado['sexo'];
             $_SESSION['usuarioDataNAlu'] = $resultado['nascimento'];
             $_SESSION['usuarioIdadeAlu'] = $resultado['idade'];
-            $_SESSION['usuarioTurAlu'] = $resultado['turma'];
+            $_SESSION['usuarioTurAlu'] = $curso['nome']." - ".$turma['turno']." - ".$turma['unidadeensino'];
             $_SESSION['usuarioNomeRAlu'] = $resultado['nomeResp'];
             $_SESSION['usuarioTelFRAlu'] = $resultado['fixoResp'];
             $_SESSION['usuarioTelCRAlu'] = $resultado['celResp'];
             $_SESSION['usuarioEmailRAlu'] = $resultado['emailResp'];
             $_SESSION['usuarioParRAlu'] = $resultado['parentesco'];
+            $_SESSION['usuarioDataMAlu'] = $resultado['dataMatricula'];
             header("Location: Pesquisar-Aluno.php");
         }else{
             $_SESSION['loginErro'] = "Funcionário Inexistente";

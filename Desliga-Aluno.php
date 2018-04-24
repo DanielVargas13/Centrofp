@@ -14,7 +14,6 @@
                 
     //INICIALIZANDO AS VARIÁVEIS
     $id = intval($_GET['id']);
-    $turma = $_GET['turma'];
 
     //ENVIANDO A QUERY PARA O BANCO DE DADOS
     $query = "DELETE FROM alunos WHERE id='$id'";

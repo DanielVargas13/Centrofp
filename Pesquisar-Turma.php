@@ -182,13 +182,13 @@
             <tbody>
             <?php if(isset($_SESSION['usuarioTur'])) foreach($_SESSION['usuarioTur'] as &$l){ ?>
                 <tr>
-                    <td> <?php echo $l["curso"]; ?></td>
-                    <td> <?php echo $l["prof"]; ?></td>
+                    <td> <?php $id1 = $l["curso_id"]; $curso_bruto = mysqli_query($conn,"SELECT nome FROM cursos WHERE id='$id1'"); $curso = mysqli_fetch_assoc($curso_bruto); echo $curso["nome"];?></td>
+                    <td> <?php $id2 = $l["professor_id"]; $turma_bruto = mysqli_query($conn,"SELECT nome FROM professores WHERE id='$id2'"); $turma = mysqli_fetch_assoc($turma_bruto); echo $turma["nome"];?></td>
                     <td> <?php echo $l["turno"]; ?></td>
                    <td><a href="Seleciona-Turma.php?id=<?php echo $l["id"]; ?>"> <button class='btn-floating waves-effect waves-light light-blue darken-3' type='button' onclick=''>
                         <i class='material-icons right'> edit </i>    
             </button></a></td>
-               <td><a href="javascript: if(confirm('Tem certeza que deseja remover a turma de <?php echo $l["curso"]; ?> do professor <?php echo $l["prof"]; ?> ?')) location.href='Desliga-Turma.php?id=<?php echo $l["id"]; ?>';"> <button class='btn-floating waves-effect waves-light red darken-3' type='button' onclick=''>
+               <td><a href="javascript: if(confirm('Tem certeza que deseja remover a turma de <?php echo $curso["nome"]; ?> do professor <?php echo $turma["nome"]; ?> ?')) location.href='Desliga-Turma.php?id=<?php echo $l["id"]; ?>';"> <button class='btn-floating waves-effect waves-light red darken-3' type='button' onclick=''>
                         <i class='material-icons right'> close </i>    
             </button></a></td>
                 </tr>

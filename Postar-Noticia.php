@@ -23,9 +23,10 @@
     //INICIALIZANDO AS VARIÁVEIS
     $titulo = isset($_POST['tTitulo'])? $_POST['tTitulo']: '';
     $descricao = isset($_POST['tDescricao']) ? $_POST['tDescricao']: '';
+    $gerente = $_SESSION['usuarioId'];
                 
     //ENVIANDO A QUERY PARA O BANCO DE DADOS
-    $query = "INSERT INTO noticias(titulo,descricao,data,imagem) VALUES('$titulo','$descricao',NOW(),'$novo_nome')";
+    $query = "INSERT INTO noticias(titulo,descricao,imagem,data,gerente_id) VALUES('$titulo','$descricao','$novo_nome',NOW(),'$gerente')";
     
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conexao->query($query)=== TRUE){

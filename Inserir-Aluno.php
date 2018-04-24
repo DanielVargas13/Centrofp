@@ -3,6 +3,16 @@
     include "Conexao.php";
     
     //INICIALIZANDO AS VARIÁVEIS
+    $turma_bruto = isset($_POST['tTurma'])? $_POST['tTurma']:'';
+    list($curso,$turno,$unidade) = explode(" - ",$turma_bruto);
+    $curso_b = mysqli_query($conn, "SELECT id FROM cursos WHERE nome='$curso'");
+    $curso_id = mysqli_fetch_assoc($curso_b);
+    $id = $curso_id['id'];
+    $turma_b = mysqli_query($conn, "SELECT id FROM turmas WHERE curso_id='$id' AND turno='$turno' AND unidadeensino='$unidade'");
+    $turma = mysqli_fetch_assoc($turma_b);
+    $turma_id = $turma['id'];
+
+
     $nome = isset($_POST['tNome'])? $_POST['tNome']: '';
     $matricula = isset($_POST['tMatricula'])? $_POST['tMatricula']: '';
     $cpf = isset($_POST['tCPF']) ? $_POST['tCPF']: '';  
@@ -20,7 +30,6 @@
     $dataNas = new DateTime($nascimento);
     $idadeData = $dataNas->diff(new DateTime());
     $idade = $idadeData->y;
-    $turma = isset($_POST['tTurma'])? $_POST['tTurma']:'';
     $nomeResp = isset($_POST['tNomeResp'])? $_POST['tNomeResp']:'';
     $telFixoResp = isset($_POST['tFixoResp'])? $_POST['tFixoResp']:'';
     $telCelResp = isset($_POST['tCelResp'])? $_POST['tCelResp']:'';
@@ -28,8 +37,8 @@
     $parentesco = isset($_POST['tParentesco'])? $_POST['tParentesco']: '';
     
     //ENVIANDO A QUERY PARA O BANCO DE DADOS
-    $query = "INSERT INTO alunos(nome, matricula, cpf, rg, email, senha, telFix, telCel, bairro, rua, numero, sexo, foto, nascimento, idade, turma, nomeResp, fixoResp, celResp, emailResp, parentesco) VALUES('$nome', '$matricula', '$cpf', '$rg', '$email', '$senha', '$telFixo', '$telCel', '$bairro', '$rua', '$numero', '$sexo', '$foto', '$nascimento', '$idade', '$turma', '$nomeResp', '$telFixoResp', '$telCelResp', '$emailResp', '$parentesco')";
-    echo $query;
+    $query = "INSERT INTO alunos(nome, matricula, cpf, rg, email, senha, telFix, telCel, bairro, rua, numero, sexo, foto, nascimento, idade, nomeResp, fixoResp, celResp, emailResp, parentesco,dataMatricula,turma_id) VALUES('$nome', '$matricula', '$cpf', '$rg', '$email', '$senha', '$telFixo', '$telCel', '$bairro', '$rua', '$numero', '$sexo', '$foto', '$nascimento', '$idade', '$nomeResp', '$telFixoResp', '$telCelResp', '$emailResp', '$parentesco',NOW(),'$turma_id')";
+
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conn->query($query)=== TRUE){
         header("Location: Cadastro-Alunos.php");

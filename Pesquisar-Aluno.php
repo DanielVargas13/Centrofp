@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include "Conexao.php";
-$sql_banco = mysqli_query($conn, "SELECT * FROM turmas ORDER BY curso");
+$sql_banco = mysqli_query($conn, "SELECT * FROM turmas");
 ?>
 
 <!DOCTYPE html>
@@ -487,12 +487,16 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM turmas ORDER BY curso");
                                 </button></td>
               </tr>
               <tr>
+                <td>Data de Matricula</td>
+                <td><?php  echo $_SESSION['usuarioDataMAlu'] ?><td>
+              </tr>
+              <tr>
                 <td>Idade</td>
                 <td><?php  echo $_SESSION['usuarioIdadeAlu']." anos" ?></td>
               </tr>
               <tr>
                 <td>Turma</td>
-                <td><?php  echo $_SESSION['usuarioTurAlu'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioTurAlu'] ?>" type="text" name="tTurma" id="search" maxlength="50" hidden></td>
+                <td><?php  echo $_SESSION['usuarioTurAlu'] ?><input class="active validate" value="<?php  echo $_SESSION['usuarioTurAlu'] ?>" type="text" name="tTurma" id="search" autocomplete="off" maxlength="50" hidden></td>
                 <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModTur" id="cModTur" onclick="verificaInputTur()">
                                     <i class="material-icons right"> edit </i>    
                                 </button></td>
@@ -564,7 +568,7 @@ $sql_banco = mysqli_query($conn, "SELECT * FROM turmas ORDER BY curso");
               $('#search').autocomplete({
                 data: {
                     <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
-                        "<?php echo $l["curso"]; echo " - "; echo $l["turno"]; echo " - "; echo $l["unidadeEnsino"] ?>": null,
+                        "<?php $id = $l["curso_id"]; $curso_bruto = mysqli_query($conn,"SELECT nome FROM cursos WHERE id='$id'"); $curso = mysqli_fetch_assoc($curso_bruto); echo $curso["nome"];  echo " - "; echo $l["turno"]; echo " - "; echo $l["unidadeensino"] ?>": null,
                     <?php } ?>
                 },
               });

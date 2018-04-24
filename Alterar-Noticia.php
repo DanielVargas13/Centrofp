@@ -24,9 +24,10 @@
     $id = isset($_POST['tId'])? $_POST['tId']: '';
     $titulo = isset($_POST['tTitulo'])? $_POST['tTitulo']: '';
     $descricao = isset($_POST['tDescricao']) ? $_POST['tDescricao']: '';
+    $gerente = $_SESSION['usuarioId'];
     
      //ENVIANDO A QUERY PARA O BANCO DE DADOS
-    $query = "UPDATE noticias SET titulo='$titulo',descricao='$descricao',imagem='$novo_nome',data=NOW() WHERE id='$id'";
+    $query = "UPDATE noticias SET titulo='$titulo',descricao='$descricao',data=NOW(),imagem='$novo_nome',gerente_id='$gerente' WHERE id='$id'";
     
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conexao->query($query)=== TRUE){

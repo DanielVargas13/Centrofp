@@ -1,13 +1,13 @@
 <?php 
     session_start();
     include "Conexao.php";
-    $sql_banco = mysqli_query($conn, "SELECT * FROM noticias ORDER BY data desc LIMIT 5");
+    $sql_banco = mysqli_query($conn, "SELECT * FROM alunos ORDER BY nome");
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Recepcionista - Home</title>
+        <title>Gerar Contrato</title>
         <meta charset="UTF-8">
         <meta name="discription" content="">
         <meta name="keywords" content="">
@@ -19,15 +19,25 @@
         <!-- Materialize CSS-->
         <link rel="stylesheet" href="css/materialize.min.css">
         
-    </head>
-    <body class="grey lighten-4">
+        <script>
+
+       //Proibe E-mails
+            function loadProibeEmails(){
+                alert('Vá para a tela inicial para enviar um E-mail!');
+                return false;
+            }
+
+        </script>
         
+    </head>
+    <body class="grey lighten-2">
+
         <div class="navbar-fixed">
             <nav class="light-blue darken-3">
                 <div class="nav-content">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light modal-trigger" href="Recepcionista.php"> Home </a></li>                       
-                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" > E-mails </a></li>
+                        <li><a class="waves-effect waves-light modal-trigger" href="#Mensagens" onclick="loadProibeEmails()"> E-mails </a></li>
                         <li><a class="waves-effect waves-light" href="Sair.php"> Sair </a></li>                    
                         <li><a class="btn waves-effect waves-light red darken-1" id="side" data-activates="slide-out"><i class="material-icons"> menu </i></a></li>
                     </ul>
@@ -36,75 +46,6 @@
         </div>
 
         <br><br><br>
-
-       <?php while($l = mysqli_fetch_array($sql_banco)){ ?>   
-            <div class="row">
-              <div class="col s12 m6 offset-m3">
-                <div class="card z-depth-4">
-                    <div class="card-image">
-                        <img src="Img_Noticias/<?php echo $l["imagem"]; ?>">
-                        <span class="card-title"> <?php echo $l["titulo"]; ?> </span>
-                  </div>
-                  <div class="card-content">
-                    <p><?php echo $l["descricao"]; ?></p>
-                    <h8>[<?php echo date("d/m/Y", strtotime($l['data']));?>]</h8>
-                  </div>
-                </div>
-              </div>
-            </div>
-        <?php } ?> 
-               
-        <div class="modal modal-fixed-footer" id="Mensagens">
-            <div class="modal-content">
-                <h4> Envio de E-mail </h4><br>
-                <form name="EnvioEmail" method="post" action="Mail.php">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix"> account_box </i>
-                            <label for="cNome">Nome: </label><input class="active validate" type="text" name="tNome" id="cNome" maxlength="50" placeholder="Seu nome completo" pattern="[A-Za-z\s]+$" required>
-                        </div>
-                    </div>         
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix"> email </i>
-                            <label> E-mail: </label><input class="active validate" type="email" name="tMail" id="cMail" maxlength="30" placeholder="E-mail do destinatário" required>
-                        </div>
-                    </div>  
-                    <div class="row">
-                     <div class="input-field col s12">
-                            <i class="material-icons prefix"> chat </i>
-                            <label for="cAssunto">Assunto: </label><input class="active validate" type="text" name="tAssunto" id="cAssunto" maxlength="100" placeholder="Assunto da mensagem" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix"> message </i>
-                            <textarea id="cMensagem" name="tMensagem" class="materialize-textarea active validate" placeholder="Mensagem a ser Enviada" required></textarea>
-                            <label for="textarea1"> Mensagem </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="file-field input-field">
-                            <div class="btn waves-effect waves-light light-blue darken-3">
-                                <span> Arquivos </span>
-                                <input type="file"  multiple>
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="Upload de Arquivos">
-                            </div>
-                        </div> 
-                    </div>
-
-                    <button class="btn waves-effect waves-light light-blue darken-3 right" type="submit" onclick="return valida()"> Enviar
-                        <i class="material-icons right"> send </i>    
-                    </button> 
-                </form>    
-            </div>
-
-            <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"> Sair </a>
-            </div>
-        </div>   
                
         <ul id="slide-out" class="side-nav">           
             <li>
@@ -123,8 +64,8 @@
                             <ul>
                                 <li>
                                 <li><a class="waves-effect" href="Cadastro-Alunos.php"> Cadastro de Alunos </a></li> 
-                                <li><a class="waves-effect" href="Carrega-Aluno.php"> Pesquisar Aluno </a></li>
-                                <li><a class="waves-effect" href="Desligar-Aluno.php"> Desligar Aluno </a></li>                                  
+                                <li><a class="waves-effect" href=""> Pesquisar Aluno </a></li>
+                                <li><a class="waves-effect" href=""> Desligar Aluno </a></li>                                 
                                 </li>
                             </ul>
                         </div>
@@ -139,7 +80,7 @@
                             <ul>
                                 <li>
                                 <li><a class="waves-effect" href=""> Gerar Contrato para Alunos </a></li>
-                                <li><a class="waves-effect" href="Declaracao-Aluno.php"> Gerar Declaração para Alunos </a></li>                                   
+                                <li><a class="waves-effect" href="Declaracao-Aluno.php"> Gerar Declaração para Alunos </a></li>                               
                                 </li>
                             </ul>
                         </div>
@@ -193,33 +134,59 @@
                 </ul>
             </li>
             <li><div class="divider"></div></li> 
-
+        </ul>  
         
-        <!-- Jquery-->
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <!--Materialize JS-->
-        <script src="js/materialize.min.js"></script>
-    
-        <!--SIDENAV-->
-        <script>
-            $(document).ready(function(){
-                $("#side").sideNav();
-            });
-        </script>
-        
-        <!-- MODALS -->
-        <script>
-            $(document).ready(function(){
-                // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-                $('.modal').modal();
-             });       
-        </script>  
-        <script>   
-            $(document).ready(function(){
-                // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-                $('.modal-trigger').leanModal();
-            }); 
-        </script> 
+        <br><br><br>
+            <div class="row">
+                <div class="col s10 m6 16 container center z-depth-5 offset-m3 offset-s1">
+                <div class="card-panel z-depth-5 ">    
 
+        <table class="bordered highlight">
+            <thead>
+                <tr>
+                   <th>Nº de Matricula</th>
+                    <th> Nome </th>
+                    <th> Gerar Contrato </th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
+                <tr>
+                   <td> <?php echo $l["matricula"]; ?></td>
+                    <td> <?php echo $l["nome"]; ?></td>
+                    <td><a href="Gerar-Declaracao.php?id=<?php echo $l["id"]; ?>" target="_blank"> <button class='btn-floating waves-effect waves-light green darken-3' type='button' onclick=''>
+                        <i class='material-icons right'> border_color </i>    
+                </button></a></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>   
+        <br><br>
+         <div class="center"> 
+                      <a href="Recepcionista.php">
+                      <button class="btn waves-effect waves-light light-blue darken-3" type="button"> Voltar
+                          <i class="material-icons right"> send </i>    
+                      </button>
+                      </a>         
+          </div>
+            </div>
+            </div>
+            </div>
+            <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+            <!-- Jquery -->
+            <script type="text/javascript"
+            accesskey=""src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            <!-- Materialize JS -->
+            <script src="js/materialize.js"></script>  
+            
+            <!-- SIDENAV-->
+            <script>
+                $(document).ready(function(){
+                    $("#side").sideNav();
+                });
+            </script>  
+        
     </body>
 </html>

@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include "Conexao.php";
-        $sql_banco = mysqli_query($conn, "SELECT * FROM turmas ORDER BY curso");
+        $sql_banco = mysqli_query($conn, "SELECT * FROM turmas ORDER BY curso_id");
 ?>
 
 <!DOCTYPE html>
@@ -313,9 +313,8 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Gerar Declaração para Alunos </a></li>
-                                <li><a class="waves-effect" href=""> Gerar contrato para Alunos </a></li>                                
-                                </li>
+                                 <li><a class="waves-effect" href=""> Gerar Contrato para Alunos </a></li>
+                                <li><a class="waves-effect" href="Declaracao-Aluno.php"> Gerar Declaração para Alunos </a></li>                   </li>
                             </ul>
                         </div>
                     </li>   
@@ -451,7 +450,7 @@
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix"> library_books </i>
-                                    <label for="cTurma">Turma: </label><input class="active validate" type="text" name="tTurma" id="search" maxlength="50" placeholder="Nome do Curso/Turma" required>
+                                    <label for="cTurma">Turma: </label><input class="active validate" type="text" name="tTurma" id="search" maxlength="50" autocomplete="off" placeholder="Nome do Curso/Turma" required>
                                 </div>
                             </div>  
                             <div class="row">
@@ -515,7 +514,7 @@
               $('#search').autocomplete({
                 data: {
                     <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
-                        "<?php echo $l["curso"]; echo " - "; echo $l["turno"]; echo " - "; echo $l["unidadeEnsino"] ?>": null,
+                        "<?php $id = $l["curso_id"]; $curso_bruto = mysqli_query($conn,"SELECT nome FROM cursos WHERE id='$id'"); $curso = mysqli_fetch_assoc($curso_bruto); echo $curso["nome"];  echo " - "; echo $l["turno"]; echo " - "; echo $l["unidadeensino"] ?>": null,
                     <?php } ?>
                 },
               });

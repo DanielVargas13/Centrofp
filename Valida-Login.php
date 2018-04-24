@@ -16,6 +16,8 @@
             $tabela = "professores";
         }else if($cargo == "Recepcao"){
             $tabela = "recepcao";
+        }else if($cargo == "Aluno"){
+            $tabela = "alunos";
         }
         
         $sql = "SELECT * FROM $tabela WHERE email = '$usuario' && senha = '$senha' LIMIT 1";
@@ -31,6 +33,7 @@
             $_SESSION['usuarioFoto'] = $resultado['foto'];
             $_SESSION['usuarioEmail'] = $resultado['email'];
             $_SESSION['usuarioSenha'] = $resultado['senha'];
+            $_SESSION['usuarioCargo'] = $cargo;
             if($cargo == "Aluno"){
                 header("Location: Alunos.php");
             }else if($cargo == "Gerencia"){
@@ -41,6 +44,8 @@
                 header("Location: Professores.php");
             }else if($cargo == "Recepcao"){
                  header("Location: Recepcionista.php");
+            }else if($cargo == "Comercial"){
+                header("");
             }
         }else{
             $_SESSION['loginErro'] = "Usuário ou senha Inválido";

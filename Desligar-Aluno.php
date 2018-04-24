@@ -79,8 +79,8 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Gerar Declaração para Alunos </a></li>
-                                <li><a class="waves-effect" href="Contrato-Aluno.php"> Gerar contrato para Alunos </a></li> 
+                                <li><a class="waves-effect" href=""> Gerar Contrato para Alunos </a></li>
+                                <li><a class="waves-effect" href="Declaracao-Aluno.php"> Gerar Declaração para Alunos </a></li> 
                                 
                                 </li>
                             </ul>
@@ -152,8 +152,8 @@
                         <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
                             <tr>
                                 <td> <?php echo $l["nome"]; ?></td>
-                                <td> <?php echo $l["turma"]; ?></td>
-                                <td><a href="javascript: if(confirm('Tem certeza que deseja desligar o aluno <?php echo $l["nome"]; ?> do sistema?')) location.href='Desliga-Aluno.php?id=<?php echo $l["id"]; ?>&turma=<?php echo $l["turma"]; ?>';"> <button class='btn-floating waves-effect waves-light red darken-3' type='button' onclick=''>
+                                <td> <?php $turma_id = $l["turma_id"]; $turma_bruto = mysqli_query($conn,"SELECT * FROM turmas WHERE id='$turma_id'"); $turma = mysqli_fetch_assoc($turma_bruto); $curso_id = $turma["curso_id"]; $curso_bruto = mysqli_query($conn,"SELECT nome FROM cursos WHERE id='$curso_id'"); $curso = mysqli_fetch_assoc($curso_bruto); echo $curso["nome"];  echo " - "; echo $turma["turno"]; echo " - "; echo $turma["unidadeensino"] ?></td>
+                                <td><a href="javascript: if(confirm('Tem certeza que deseja desligar o aluno <?php echo $l["nome"]; ?> do sistema?')) location.href='Desliga-Aluno.php?id=<?php echo $l["id"];?>';"> <button class='btn-floating waves-effect waves-light red darken-3' type='button' onclick=''>
                                     <i class='material-icons right'> close </i>    
                                 </button></a></td>
                             </tr>

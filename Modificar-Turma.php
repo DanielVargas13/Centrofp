@@ -1,6 +1,8 @@
 <?php 
     session_start();
     include "Conexao.php";
+    $sql_banco = mysqli_query($conn, "SELECT * FROM cursos ORDER BY nome");
+    $sql_banco_prof = mysqli_query($conn, "SELECT * FROM professores ORDER BY nome");
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +53,14 @@
                 input2.value = "<?php  echo $_SESSION['turmaHoraFim'] ?>";
             }
         }
+            function verificaInputTurno(){
+                var input = document.getElementById('turno');		
+                    if (input.hidden == true){
+                        input.hidden = false;
+                    }else{
+                        input.hidden = true;
+                    }
+        }
             function verificaInputData(){
         var input = document.getElementById('cDataIn');
              var input2 = document.getElementById('cDataTr');
@@ -81,6 +91,19 @@
             alert('Não é possível modificar o número de Alunos!');
             return false;
         }
+            function verificaCampos(){
+            var input = "<?php  echo $_SESSION['turmaTurno'] ?>";   
+            if(document.formCad.tTurno[0].checked == false && document.formCad.tTurno[1].checked == false && document.formCad.tTurno[2].checked == false){
+                        if (input=="Manha"){
+                           document.formCad.tTurno[0].checked = true; 
+                        }else if (input == "Tarde"){
+                            document.formCad.tTurno[1].checked = true;
+                        }else{
+                            document.formCad.tTurno[2].checked = true;
+                        }
+                    }
+                    return true;
+        } 
 
     
         //Proibe Noticias
@@ -210,18 +233,28 @@
                         <input type="text" value="<?php  echo $_SESSION['turmaId'] ?>" name="tId" id="cId" hidden/>
                         <tr>
                             <td><b>Curso: </b></td>
-                            <td><?php  echo $_SESSION['turmaCurso'] ?><input class="active validate" type="text" value="<?php  echo $_SESSION['turmaCurso'] ?>" name="tCurso" id="cCurso" maxlength="70" hidden></td>
+                            <td><?php  echo $_SESSION['turmaCurso'] ?><input class="active validate autocomplete" type="text" value="<?php  echo $_SESSION['turmaCurso'] ?>" name="tCurso" id="cCurso" maxlength="70" hidden></td>
                             <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModCurso" id="cModCurso" onclick="verificaInputCurso()">
                                     <i class="material-icons right"> edit </i>    
                                 </button></td>
                         </tr>
                         <tr>
                             <td><b>Professor: </b></td>
-                            <td><?php  echo $_SESSION['turmaProfessor'] ?><input class="active validate" type="text" value="<?php  echo $_SESSION['turmaProfessor'] ?>" name="tProf" id="cProf" maxlength="70" hidden></td>
+                            <td><?php  echo $_SESSION['turmaProfessor'] ?><input class="active validate autocomplete" type="text" value="<?php  echo $_SESSION['turmaProfessor'] ?>" name="tProf" id="cProf" maxlength="70" hidden></td>
                             <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModProf" id="cModProf" onclick="verificaInputProfessor()">
                                     <i class="material-icons right"> edit </i>    
                                 </button></td>
                         </tr>
+                        <tr>
+                        <td>Turno</td>
+                        <td><?php  echo $_SESSION['turmaTurno'] ?><fieldset id="turno" hidden><legend> Turno </legend>
+                                        <input type="radio" name="tTurno" id="cMan" value="Manha"><label for="cMan">Manhã</label>
+                                        <input type="radio" name="tTurno" id="cTard" value="Tarde"><label for="cTard">Tarde</label>
+                                        <input type="radio" name="tTurno" id="cNoit" value="Noite"><label for="cNoit">Noite</label>               </fieldset></td>
+                        <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModTurno" id="cModTurno" onclick="verificaInputTurno()">
+                                            <i class="material-icons right">  edit </i>    
+                                        </button></td>
+                      </tr>
                         <tr>
                             <td><b>Dias da Semana: </b></td>
                             <td><?php if($_SESSION['turmaSegunda'] == 1){echo "Segunda-Feira; ";} if($_SESSION['turmaTerca'] == 1){echo "Terça-Feira; ";} if($_SESSION['turmaQuarta'] == 1){echo "Quarta-Feira; ";} if($_SESSION['turmaQuinta'] == 1){echo "Quinta-Feira; ";} if($_SESSION['turmaSexta'] == 1){echo "Sexta-Feira; ";} if($_SESSION['turmaSabado'] == 1){echo "Sábado. ";}   ?><input class="active validate" type="text" value="<?php  echo $_SESSION['turmaSegunda'], $_SESSION['turmaTerca'],$_SESSION['turmaQuarta'], $_SESSION['turmaQuinta'], $_SESSION['turmaSexta'],$_SESSION['turmaSabado'] ?>" name="tSemana" id="cSemana" maxlength="70" hidden></td>
@@ -238,7 +271,7 @@
                         </tr>
                         <tr>
                             <td><b>Duração: </b></td>
-                            <td><?php  echo "Inicio: "; echo date('d/m/Y', strtotime($_SESSION['turmaDataInicio']));  echo "   ---   Termino: "; echo date('d/m/Y', strtotime($_SESSION['turmaDataFim']))  ?><input class="center" type="date" name="tDataIn" id="cDataIn" value="<?php  echo $_SESSION['turmaDataInicio'] ?>"  min="2018-01-01" hidden><input class="center" type="date" name="tDataTr" id="cDataTr"  value="<?php  echo $_SESSION['turmaDataFim'] ?>"  min="2018-01-02" hidden></td>
+                            <td><?php  echo "Inicio: "; echo date_format(new DateTime($_SESSION['turmaDataInicio']),'d/m/Y');  echo "   ---   Termino: "; echo  date_format(new DateTime($_SESSION['turmaDataFim']),'d/m/Y')  ?><input class="center" type="date" name="tDataIn" id="cDataIn" value="<?php  echo $_SESSION['turmaDataInicio'] ?>"  min="2018-01-01" hidden><input class="center" type="date" name="tDataTr" id="cDataTr"  value="<?php  echo $_SESSION['turmaDataFim'] ?>"  min="2018-01-02" hidden></td>
                             <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModData" id="cModData" onclick="verificaInputData()">
                                     <i class="material-icons right"> edit </i>    
                                 </button></td>
@@ -265,7 +298,7 @@
                 </table>   
           <br><br>
            <div class="center"> 
-           <a href="Pesquisar-Turma.php">
+           <a href="Carrega-Turma.php">
                 <button class="btn waves-effect waves-light light-blue darken-3" type="button"> Voltar
                     <i class="material-icons right"> send </i>    
                 </button>&nbsp;&nbsp;&nbsp;  
@@ -312,7 +345,32 @@
                 $('#cIUnidade').val($('#cUnidade').val());
                 });
             });
-        </script>           
+        </script>
+        <!-- AUTOCOMPLETE NOME DO CURSO-->
+        <script>
+            $(document).ready(function(){
+              $('#cCurso').autocomplete({
+                data: {
+                    <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
+                        "<?php echo $l["nome"]; ?>": null,
+                    <?php } ?>
+                },
+              });
+            });      
+        </script>
+
+        <!-- AUTOCOMPLETE NOME DO PROFESSOR-->
+        <script>
+            $(document).ready(function(){
+              $('#cProf').autocomplete({
+                data: {
+                    <?php while($l = mysqli_fetch_array($sql_banco_prof)){ ?>
+                        "<?php echo $l["nome"]; ?>": null,
+                    <?php } ?>
+                },
+              });
+            });      
+        </script>             
         
     </body>
 </html>

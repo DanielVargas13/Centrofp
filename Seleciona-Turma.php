@@ -9,10 +9,17 @@
         $result = mysqli_query($conn, $sql);
         $resultado = mysqli_fetch_assoc($result);
         
+        $curso_id = $resultado['curso_id'];
+        $prof_id = $resultado['professor_id'];
+        $resultCurso = mysqli_query($conn, "SELECT nome FROM cursos WHERE id='$curso_id'");
+        $resultProf = mysqli_query($conn, "SELECT nome FROM professores WHERE id='$prof_id'");
+        $curso_bruto = mysqli_fetch_assoc($resultCurso);
+        $prof_bruto = mysqli_fetch_assoc($resultProf);
+        
         if(isset($resultado)){
             $_SESSION['turmaId'] = $resultado['id'];
-            $_SESSION['turmaCurso'] = $resultado['curso'];
-            $_SESSION['turmaProfessor'] = $resultado['prof'];
+            $_SESSION['turmaCurso'] = $curso_bruto['nome'];
+            $_SESSION['turmaProfessor'] = $prof_bruto['nome'];
             $_SESSION['turmaTurno'] = $resultado['turno'];
             $_SESSION['turmaSegunda'] = $resultado['segunda'];
             $_SESSION['turmaTerca'] = $resultado['terca'];
@@ -25,7 +32,7 @@
             $_SESSION['turmaDataInicio'] = $resultado['dataini'];
             $_SESSION['turmaDataFim'] = $resultado['datafim'];
             $_SESSION['turmaQtdAlunos'] = $resultado['nalunos'];
-            $_SESSION['turmaUnidade'] = $resultado['unidadeEnsino'];
+            $_SESSION['turmaUnidade'] = $resultado['unidadeensino'];
             header("Location: Modificar-Turma.php");
         }else{
             $_SESSION['loginErro'] = "Turma Inexistente!";

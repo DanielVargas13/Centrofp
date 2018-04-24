@@ -187,7 +187,7 @@
     
         <br><br><br>
     <div class="row">
-        <form method="post" name="formCad" action="Alterar-Gerente.php" class="col s12">
+        <form method="post" name="formCad" action="Modificar-Conta.php" class="col s12">
             <div id="resultado" class="col s10 m8 16 container center z-depth-5 offset-s1 offset-m2">
             <div class="card-panel z-depth-5">
                     <table class="bordered striped">
