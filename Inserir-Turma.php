@@ -16,12 +16,16 @@
     //INICIALIZANDO AS VARIÁVEIS
     $curso = isset($_POST['tCurso'])? $_POST['tCurso']: '';
     $prof = isset($_POST['tProf']) ? $_POST['tProf']: '';
+    $unidadeEnsino = isset($_POST['tIUnidade'])? $_POST['tIUnidade']:'';
     $resultCurso = mysqli_query($conexao, "SELECT id FROM cursos WHERE nome='$curso'");
     $resultProf = mysqli_query($conexao, "SELECT id FROM professores WHERE nome='$prof'");
+    $resultUni = mysqli_query($conexao, "SELECT id FROM unidades WHERE bairro='$unidadeEnsino'");
     $curso_bruto = mysqli_fetch_assoc($resultCurso);
     $prof_bruto = mysqli_fetch_assoc($resultProf);
+    $uni_bruto = mysqli_fetch_assoc($resultUni);
     $curso_id = $curso_bruto['id'];
     $prof_id = $prof_bruto['id'];
+    $unidade_id = $uni_bruto['id'];
 
     $turno = isset($_POST['tTurno'])? $_POST['tTurno']: '';
     $seg = isset($_POST['tSeg'])? $_POST['tSeg']: '';
@@ -34,10 +38,10 @@
     $horafim = isset($_POST['end0'])? $_POST['end0']: '';  
     $dataini = isset($_POST['tDataIn'])? $_POST['tDataIn']: '';    
     $datafim = isset($_POST['tDataTr'])? $_POST['tDataTr']: ''; 
-    $unidadeEnsino = isset($_POST['tIUnidade'])? $_POST['tIUnidade']:'';
+    
     
     //ENVIANDO A QUERY DO CURSO PARA O BANCO DE DADOS
-    $query = "INSERT INTO turmas(turno, segunda, terca, quarta, quinta, sexta, sabado, horainicio, horafim, dataini, datafim, unidadeensino,curso_id,professor_id) VALUES('$turno','$seg','$ter','$qua','$qui','$sex','$sab','$horaini','$horafim','$dataini','$datafim','$unidadeEnsino','$curso_id','$prof_id')";
+    $query = "INSERT INTO turmas(turno, segunda, terca, quarta, quinta, sexta, sabado, horainicio, horafim, dataini, datafim, curso_id,professor_id,unidade_id) VALUES('$turno','$seg','$ter','$qua','$qui','$sex','$sab','$horaini','$horafim','$dataini','$datafim','$curso_id','$prof_id','$unidade_id')";
     
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conexao->query($query)=== TRUE){

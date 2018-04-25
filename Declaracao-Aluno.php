@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Gerar Contrato</title>
+        <title>Gerar Declaração </title>
         <meta charset="UTF-8">
         <meta name="discription" content="">
         <meta name="keywords" content="">
@@ -79,7 +79,7 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Gerar Contrato para Alunos </a></li>
+                                <li><a class="waves-effect" href="Contrato-Aluno.php"> Gerar Contrato para Alunos </a></li>
                                 <li><a class="waves-effect" href="Declaracao-Aluno.php"> Gerar Declaração para Alunos </a></li>                               
                                 </li>
                             </ul>
@@ -144,16 +144,16 @@
         <table class="bordered highlight">
             <thead>
                 <tr>
-                   <th>Nº de Matricula</th>
                     <th> Nome </th>
-                    <th> Gerar Contrato </th>
+                   <th>Nº de Matricula</th>
+                    <th> Gerar Declaração </th>
                 </tr>
             </thead>
             <tbody>
             <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
                 <tr>
-                   <td> <?php echo $l["matricula"]; ?></td>
                     <td> <?php echo $l["nome"]; ?></td>
+                   <td> <?php echo $l["matricula"]; ?></td>
                     <td><a href="Gerar-Declaracao.php?id=<?php echo $l["id"]; ?>" target="_blank"> <button class='btn-floating waves-effect waves-light green darken-3' type='button' onclick=''>
                         <i class='material-icons right'> border_color </i>    
                 </button></a></td>

@@ -10,6 +10,10 @@
         $result = mysqli_query($conn, $sql);
         $resultado = mysqli_fetch_assoc($result);
         
+        $id = $resultado['unidade_id'];
+        $uni_b = mysqli_query($conn, "SELECT bairro FROM unidades WHERE id='$id'");
+        $unidade = mysqli_fetch_assoc($unidade_b);
+        
         if(isset($resultado)){
             $_SESSION['usuarioIdFunc'] = $resultado['id'];
             $_SESSION['usuarioNomeFunc'] = $resultado['nome'];
@@ -22,7 +26,7 @@
             $_SESSION['usuarioSexoFunc'] = $resultado['sexo'];
             $_SESSION['usuarioDataNFunc'] = $resultado['data_nasc'];
             $_SESSION['usuarioFuncaoFunc'] = $resultado['cargo'];
-            $_SESSION['usuarioUnidadeFunc'] = $resultado['unidade'];
+            $_SESSION['usuarioUnidadeFunc'] = $unidade['bairro'];
             header("Location: Pesquisar-Funcionario.php");
         }else{
             $_SESSION['loginErro'] = "Funcionário Inexistente";

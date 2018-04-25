@@ -152,7 +152,7 @@
                         <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
                             <tr>
                                 <td> <?php echo $l["nome"]; ?></td>
-                                <td> <?php $turma_id = $l["turma_id"]; $turma_bruto = mysqli_query($conn,"SELECT * FROM turmas WHERE id='$turma_id'"); $turma = mysqli_fetch_assoc($turma_bruto); $curso_id = $turma["curso_id"]; $curso_bruto = mysqli_query($conn,"SELECT nome FROM cursos WHERE id='$curso_id'"); $curso = mysqli_fetch_assoc($curso_bruto); echo $curso["nome"];  echo " - "; echo $turma["turno"]; echo " - "; echo $turma["unidadeensino"] ?></td>
+                                <td> <?php $turma_id = $l["turma_id"]; $turma_bruto = mysqli_query($conn,"SELECT * FROM turmas WHERE id='$turma_id'"); $turma = mysqli_fetch_assoc($turma_bruto); $curso_id = $turma["curso_id"]; $curso_bruto = mysqli_query($conn,"SELECT nome FROM cursos WHERE id='$curso_id'"); $curso = mysqli_fetch_assoc($curso_bruto); $uni_id = $turma["unidade_id"]; $uni_bruto = mysqli_query($conn,"SELECT bairro FROM unidades WHERE id='$uni_id'"); $unidade = mysqli_fetch_assoc($uni_bruto); echo $curso["nome"];  echo " - "; echo $turma["turno"]; echo " - "; echo $unidade["bairro"] ?></td>
                                 <td><a href="javascript: if(confirm('Tem certeza que deseja desligar o aluno <?php echo $l["nome"]; ?> do sistema?')) location.href='Desliga-Aluno.php?id=<?php echo $l["id"];?>';"> <button class='btn-floating waves-effect waves-light red darken-3' type='button' onclick=''>
                                     <i class='material-icons right'> close </i>    
                                 </button></a></td>

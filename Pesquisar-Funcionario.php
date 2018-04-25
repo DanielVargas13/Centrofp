@@ -428,7 +428,7 @@
                 <td>Unidade</td>
                 <td><?php  echo $_SESSION['usuarioUnidadeFunc'] ?><select name="tUnidade"  id="cUnidade" disabled>
                                             <option value="" disabled selected> Selecione a Unidade de Ensino </option>
-                                            <option value="Dom Camilo" > Dom Camilo </option>
+                                            <option value="Lagoa" > Lagoa </option>
                                             <option value="Felipe Claudio de Sales" > Felipe Cláudio </option>
                                       </select><input type="hidden" value="<?php  echo $_SESSION['usuarioUnidadeFunc'] ?>" name="tIUnidade" id="cIUnidade" /> </td>
                 <td><button class="btn-floating waves-effect waves-light light-blue darken-3" type="button" name="tModUnidade" id="cModUnidade" onclick="verificaInputUnidade()">

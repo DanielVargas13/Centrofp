@@ -13,7 +13,11 @@
     $sexo = isset($_POST['tSexo'])? $_POST['tSexo']: '';
     $nascimento = isset($_POST['tData'])? $_POST['tData']: '';
     $funcFuncionario = isset($_POST['tITrabalho'])? $_POST['tITrabalho']:'';
-    $unidadeEnsino = isset($_POST['tIUnidade'])? $_POST['tIUnidade']:'';
+    $unidade = isset($_POST['tIUnidade'])? $_POST['tIUnidade']:'';
+    
+    $uni_b = mysqli_query($conn, "SELECT id FROM unidades WHERE bairro='$unidade'");
+    $uni_id = mysqli_fetch_assoc($uni_b);
+    $unidade_id = $uni_id['id'];
     
     if($funcFuncionario == "Comercial"){
         $tabela = "comercial";
@@ -22,8 +26,10 @@
     }else if($funcFuncionario == "Recepcao"){
         $tabela = "recepcao";
     }  
-
-    $query = "UPDATE $tabela SET nome='$nome',cpf='$cpf',rg='$rg', telfix='$telFixo', telcel='$telCel', email='$email', sexo='$sexo', data_nasc='$nascimento', cargo='$funcFuncionario', unidade='$unidadeEnsino' WHERE id='$id'";
+    
+   
+    
+    $query = "UPDATE $tabela SET nome='$nome',cpf='$cpf',rg='$rg', telfix='$telFixo', telcel='$telCel', email='$email', sexo='$sexo', data_nasc='$nascimento', cargo='$funcFuncionario', unidade_id='$unidade_id' WHERE id='$id'";
 
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conn->query($query)=== TRUE){

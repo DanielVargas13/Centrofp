@@ -16,6 +16,10 @@
     $cargo = isset($_POST['tITrabalho'])? $_POST['tITrabalho']:'';
     $unidade = isset($_POST['tIUnidade'])? $_POST['tIUnidade']:'';
     
+    $uni_b = mysqli_query($conn, "SELECT id FROM unidades WHERE bairro='$unidade'");
+    $uni_id = mysqli_fetch_assoc($uni_b);
+    $unidade_id = $uni_id['id'];
+
     if($cargo == "Comercial"){
         $tabela = "comercial";
     }else if($cargo == "Professor"){
@@ -24,7 +28,7 @@
         $tabela = "recepcao";
     } 
     //ENVIANDO A QUERY PARA O BANCO DE DADOS
-    $query = "INSERT INTO $tabela(nome, cpf, senha, rg, telcel, telfix, email, sexo, foto, data_nasc, cargo, unidade) VALUES('$nome', '$cpf', '$senha', '$rg', '$telCel', '$telFixo', '$email', '$sexo', '$foto', '$nascimento', '$cargo', '$unidade')";
+    $query = "INSERT INTO $tabela(nome, cpf, senha, rg, telcel, telfix, email, sexo, foto, data_nasc, cargo, unidade_id) VALUES('$nome', '$cpf', '$senha', '$rg', '$telCel', '$telFixo', '$email', '$sexo', '$foto', '$nascimento', '$cargo', '$unidade_id')";
     
     //VERIFICANDO SE OS DADOS FORAM INSERIDOS COM SUCESSO
     if($conn->query($query)=== TRUE){

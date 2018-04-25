@@ -138,7 +138,7 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Gerar Contrato para Alunos </a></li>
+                                <li><a class="waves-effect" href="Contrato-Aluno.php"> Gerar Contrato para Alunos </a></li>
                                 <li><a class="waves-effect" href="Declaracao-Aluno.php"> Gerar Declaração para Alunos </a></li>                                   
                                 </li>
                             </ul>

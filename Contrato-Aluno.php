@@ -79,8 +79,8 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                <li><a class="waves-effect" href=""> Gerar Declaração para Alunos </a></li>
-                                <li><a class="waves-effect" href="Contrato-Aluno.php"> Gerar contrato para Alunos </a></li>                               
+                                <li><a class="waves-effect" href="Contrato-Aluno.php"> Gerar Declaração para Alunos </a></li>
+                                <li><a class="waves-effect" href="Declaracao-Aluno.php"> Gerar contrato para Alunos </a></li>                               
                                 </li>
                             </ul>
                         </div>
@@ -143,17 +143,17 @@
 
         <table class="bordered highlight">
             <thead>
-                <tr>
-                   <th>Nº de Matricula</th>
+                <tr>  
                     <th> Nome </th>
+                   <th>Nº de Matricula</th>
                     <th> Gerar Contrato </th>
                 </tr>
             </thead>
             <tbody>
             <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
-                <tr>
-                   <td> <?php echo $l["matricula"]; ?></td>
+                <tr>   
                     <td> <?php echo $l["nome"]; ?></td>
+                    <td> <?php echo $l["matricula"]; ?></td>
                     <td><a href="Gerar-Contrato.php?id=<?php echo $l["id"]; ?>" target="_blank"> <button class='btn-floating waves-effect waves-light green darken-3' type='button' onclick=''>
                         <i class='material-icons right'> border_color </i>    
             </button></a></td>

@@ -514,7 +514,7 @@
               $('#search').autocomplete({
                 data: {
                     <?php while($l = mysqli_fetch_array($sql_banco)){ ?>
-                        "<?php $id = $l["curso_id"]; $curso_bruto = mysqli_query($conn,"SELECT nome FROM cursos WHERE id='$id'"); $curso = mysqli_fetch_assoc($curso_bruto); echo $curso["nome"];  echo " - "; echo $l["turno"]; echo " - "; echo $l["unidadeensino"] ?>": null,
+                        "<?php $id = $l["curso_id"]; $curso_bruto = mysqli_query($conn,"SELECT nome FROM cursos WHERE id='$id'"); $curso = mysqli_fetch_assoc($curso_bruto); $id2 = $l["unidade_id"]; $uni_bruto = mysqli_query($conn,"SELECT bairro FROM unidades WHERE id='$id'"); $unidade = mysqli_fetch_assoc($uni_bruto); echo $curso["nome"];  echo " - "; echo $l["turno"]; echo " - "; echo $unidade["bairro"] ?>": null,
                     <?php } ?>
                 },
               });

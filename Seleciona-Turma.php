@@ -11,10 +11,13 @@
         
         $curso_id = $resultado['curso_id'];
         $prof_id = $resultado['professor_id'];
+        $uni_id = $resultado['unidade_id'];
         $resultCurso = mysqli_query($conn, "SELECT nome FROM cursos WHERE id='$curso_id'");
         $resultProf = mysqli_query($conn, "SELECT nome FROM professores WHERE id='$prof_id'");
+        $resultUni = mysqli_query($conn, "SELECT bairro FROM unidades WHERE id='$uni_id'");
         $curso_bruto = mysqli_fetch_assoc($resultCurso);
         $prof_bruto = mysqli_fetch_assoc($resultProf);
+        $uni_bruto = mysqli_fetch_assoc($resultUni);
         
         if(isset($resultado)){
             $_SESSION['turmaId'] = $resultado['id'];
@@ -32,7 +35,7 @@
             $_SESSION['turmaDataInicio'] = $resultado['dataini'];
             $_SESSION['turmaDataFim'] = $resultado['datafim'];
             $_SESSION['turmaQtdAlunos'] = $resultado['nalunos'];
-            $_SESSION['turmaUnidade'] = $resultado['unidadeensino'];
+            $_SESSION['turmaUnidade'] = $uni_bruto['bairro'];
             header("Location: Modificar-Turma.php");
         }else{
             $_SESSION['loginErro'] = "Turma Inexistente!";

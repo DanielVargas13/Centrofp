@@ -7,8 +7,11 @@
     list($curso,$turno,$unidade) = explode(" - ",$turma_bruto);
     $curso_b = mysqli_query($conn, "SELECT id FROM cursos WHERE nome='$curso'");
     $curso_id = mysqli_fetch_assoc($curso_b);
-    $id = $curso_id['id'];
-    $turma_b = mysqli_query($conn, "SELECT id FROM turmas WHERE curso_id='$id' AND turno='$turno' AND unidadeensino='$unidade'");
+    $id1 = $curso_id['id'];
+    $uni_b = mysqli_query($conn, "SELECT id FROM unidades WHERE bairro='$unidade'");
+    $uni_id = mysqli_fetch_assoc($uni_b);
+    $id2 = $uni_id['id'];
+    $turma_b = mysqli_query($conn, "SELECT id FROM turmas WHERE curso_id='$id1' AND turno='$turno' AND unidade_id='$id2'");
     $turma = mysqli_fetch_assoc($turma_b);
     $turma_id = $turma['id'];
 
