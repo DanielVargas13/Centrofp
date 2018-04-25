@@ -23,6 +23,7 @@
     $name = $row_resultado['nome'];
     $matricula = $row_resultado['matricula'];
     $dataAtual = date('d/m/y');
+    $dataMatricula = $row_resultado['dataMatricula'];
     //PEGANDO ID DA TURMA QUE O ALUNO ESTÁ
     $idTurma = $row_resultado['turma_id'];
     
@@ -41,6 +42,7 @@
     $hora = $row_result['horainicio'];
     $fim = $row_result['datafim'];
     $curso = $row_result['curso_id'];
+    $unidade = $row_result['unidade_id'];
 
 
     if($segunda == 1){
@@ -80,6 +82,23 @@
     $row_resul = mysqli_fetch_assoc($res);  
     
     $cursoNome = $row_resul['nome'];
+
+    
+    //CHAMANDO DADOS DA UNIDADES
+    $sql = "SELECT * FROM unidades WHERE id = '$unidade'";
+    $r = mysqli_query($conn, $sql);
+    $row_re = mysqli_fetch_assoc($r);
+    
+    $bairro = $row_re['bairro'];
+    $numero = $row_re['numero'];
+    $rua = $row_re['rua'];
+    $cidade = $row_re['cidade'];
+    $estado = $row_re['estado'];
+    $cnpj = $row_re['cnpj'];
+    $telCel = $row_re['telCel'];
+    $telFixo = $row_re['telFixo'];
+    $email = $row_re['email'];
+    
     
     //CARREGA O HTML
     $dompdf->load_html("
@@ -92,13 +111,17 @@
                 width: auto;
                 height: auto; 
             }
+            
+            #footer{
+                color: #8E8E8E
+            }
         </style>
       
         <div align='center'><img src='Img_Prog/Logo.jpg'></div>
         
         <h2 style='text-align: center;'> Declaração </h2>
                     
-        <p align='justify'> &nbsp;&nbsp;&nbsp; Declaramos para os fins que se fizerem necessários que ". $name ." está devidamente matriculada ao Centro de Formação Profissional sob á matricula de nº ". $matricula .", formalizada junto à instituição em DATA DA MATRICULA.</p>
+        <p align='justify'> &nbsp;&nbsp;&nbsp; Declaramos para os fins que se fizerem necessários que ". $name ." está devidamente matriculada ao Centro de Formação Profissional sob á matricula de nº ". $matricula .", formalizada junto à instituição em ". date_format(new DateTime($dataMatricula), 'd/m/Y').".</p>
          
         <p align='justify'> &nbsp;&nbsp;&nbsp;  Sendo cursado o módulo de ".$cursoNome." no turno ".$turno." nos dias de ".$s." ".$t." ".$qua." ".$qui." ".$sex." ".$sab." a partir das ".$hora.", com data de programação para termino em ".date_format(new DateTime($fim),'d/m/Y').".</p>
         
@@ -106,8 +129,13 @@
         
         <p align='center'> Pedro Leopoldo ". $dataAtual ."  </p><br><br>
         
-        <p align='center'> ________________________________________________ </p>
-        </p>
+        <p align='center'> ________________________________________________ </p><br><br><br><br><br><br><br><br><br><br><br><br>
+        
+        <p align='center' id='footer'> Endereço: ".$rua.", ".$numero." - ".$bairro." </p>
+        <p align='center' id='footer'> Cidade: ".$cidade."/".$estado." </p>
+        <p align='center' id='footer'> CNPJ: ".$cnpj." </p>   
+        <p align='center' id='footer'> Telefone: ".$telFixo." / ".$telCel." </p>    
+        <p align='center' id='footer'> Email: ".$email." </p>                
     ");
 
     //RENDERIZA O HTML

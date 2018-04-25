@@ -12,7 +12,7 @@
         
         $id = $resultado['unidade_id'];
         $uni_b = mysqli_query($conn, "SELECT bairro FROM unidades WHERE id='$id'");
-        $unidade = mysqli_fetch_assoc($unidade_b);
+        $unidade = mysqli_fetch_assoc($uni_b);
         
         if(isset($resultado)){
             $_SESSION['usuarioIdFunc'] = $resultado['id'];
